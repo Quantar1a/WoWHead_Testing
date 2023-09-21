@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.target>19</maven.compiler.target>
         <maven.compiler.source>19</maven.compiler.source>
-        <aspectj.version>1.9.9.1</aspectj.version>
+        <aspectj.version>1.9.8</aspectj.version>
         <allure.version>2.20.1</allure.version>
     </properties>
 
@@ -29,6 +29,11 @@
             <version>6.10.1</version>
         </dependency>
         <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-http-jdk-client</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
             <version>${allure.version}</version>
@@ -36,7 +41,7 @@
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.3.1</version>
+            <version>5.5.3</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>

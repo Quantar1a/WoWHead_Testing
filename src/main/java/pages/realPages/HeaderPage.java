@@ -9,9 +9,8 @@ public class HeaderPage extends BasePage
 
     }
 
-
-    public MainPage returnToMain()
-    {
-
-    }
+//    public MainPage returnToMain()
+//    {
+//
+//    }
 }
