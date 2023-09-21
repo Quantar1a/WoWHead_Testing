@@ -8,7 +8,7 @@ public abstract class BasePage
 {
     protected static WebDriver driver;
 
-    public static void setDriver(WebDriver webDriver)
+    public static void driverSetUp(WebDriver webDriver)
     {
         driver = webDriver;
     }

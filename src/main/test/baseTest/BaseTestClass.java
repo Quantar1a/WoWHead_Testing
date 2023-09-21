@@ -20,19 +20,21 @@ public abstract class BaseTestClass
 {
     protected static WebDriver webDriver;
 
+    @Description("Possibility to clear cookie")
     ClearCookie clearCookie = (boolean isDeleteCookie) -> {
         if (isDeleteCookie){
             webDriver.manage().deleteAllCookies();
         }
     };
 
+    @Description("Select specific browser")
     SelectBrowser selectBrowser = (Browsers browser)  -> {
         switch (browser) {
             case FIREFOX -> {
                 WebDriverManager.firefoxdriver().setup();
                 webDriver = new FirefoxDriver();
             }
-            case MS_EDGE -> {
+            case MICROSOFT_EDGE -> {
                 WebDriverManager.edgedriver().setup();
                 webDriver = new EdgeDriver();
             }
@@ -52,7 +54,7 @@ public abstract class BaseTestClass
         webDriver.manage().window().maximize();
         webDriver.manage().timeouts().pageLoadTimeout(Configuration.pageTimeLoad);
         webDriver.manage().timeouts().implicitlyWait(Configuration.implicitlyWait);
-        BasePage.setDriver(webDriver);
+        BasePage.driverSetUp(webDriver);
 
     }
 

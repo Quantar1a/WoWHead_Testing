@@ -7,5 +7,5 @@ import tools.anotations.UpdatePoint;
 @Description("Container for all necessary data")
 public class Data
 {
-    String URL = "https://www.wowhead.com";
+    final String URL = "https://www.wowhead.com";
 }

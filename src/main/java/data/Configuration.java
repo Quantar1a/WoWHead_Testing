@@ -10,8 +10,15 @@ import java.time.Duration;
 @Description("Configuration file")
 public class Configuration
 {
+    @Description("If true - delete cookie")
     public static final boolean isDeleteAllCookie = true;
-    public static final Duration pageTimeLoad = Duration.ofSeconds(60);
+
+    @Description("Page time load limit, in seconds")
+    public static final Duration pageTimeLoad = Duration.ofSeconds(30);
+
+    @Description("Implicitly wait, in seconds")
     public static final Duration implicitlyWait = Duration.ofSeconds(20);
-    public static final Browsers activeBrowser = Browsers.GOOGLE_CHROME;
+
+    @Description("Choose specific browser")
+    public static final Browsers activeBrowser = Browsers.MICROSOFT_EDGE;
 }

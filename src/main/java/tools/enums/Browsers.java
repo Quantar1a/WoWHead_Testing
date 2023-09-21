@@ -7,5 +7,7 @@ import tools.anotations.UpdatePoint;
 @Description("List of browsers")
 public enum Browsers
 {
-    MS_EDGE, GOOGLE_CHROME, FIREFOX
+    MICROSOFT_EDGE,
+    GOOGLE_CHROME,
+    FIREFOX
 }
