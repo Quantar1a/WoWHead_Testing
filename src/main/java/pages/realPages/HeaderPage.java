@@ -16,9 +16,8 @@ public class HeaderPage extends BasePage
     WebElement wowHeadLogo;
 
 
-    public MainPage returnToMain()
+    public void returnToMain()
     {
         wowHeadLogo.click();
-        return new MainPage();
     }
 }
