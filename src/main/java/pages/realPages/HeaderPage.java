@@ -15,7 +15,7 @@ public class HeaderPage extends BasePage
     }
 
     @FindBy(xpath = "//a[@class='header-logo']")
-    WebElement wowHeadLogo;
+    private WebElement wowHeadLogo;
 
 
     public void returnToMain()

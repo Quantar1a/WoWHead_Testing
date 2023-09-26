@@ -24,8 +24,8 @@ public class BlueTrackerPage extends BasePage
     }
 
 
-    By listOfNews = By.xpath("//tr[@class='listview-row']");
-    List<WebElement> list = driver.findElements(listOfNews);
+    private final By listOfNews = By.xpath("//tr[@class='listview-row']");
+    private final List<WebElement> list = driver.findElements(listOfNews);
 
     @Description("""
             Check if the name of news in the list coincidence with the name of the news title
