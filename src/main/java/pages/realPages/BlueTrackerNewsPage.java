@@ -22,7 +22,7 @@ public class BlueTrackerNewsPage extends BasePage
     }
 
     @FindBy(xpath = "//h1[@class='heading-size-1']")
-    WebElement title;
+    private WebElement title;
 
     @Description("""
             Get title and return it

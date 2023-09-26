@@ -20,12 +20,13 @@ public class MainPage extends BasePage
     }
 
     @FindBy(xpath = "//a[text()=\'Blue Tracker\']")
-    WebElement blueTracker;
+    private WebElement blueTracker;
 
-    By blueTrackerListOnMainPage = By.xpath("//a[contains(@class, 'blizzard-blue')]");
+    private final By blueTrackerListOnMainPage = By.xpath("//a[contains(@class, 'blizzard-blue')]");
 
     @FindBy(xpath = "//img[@alt='Blood Death Knight']")
-    WebElement bloodDeathKnight;
+    private WebElement bloodDeathKnight;
+
 
     public void selectBloodDeathKnight()
     {
