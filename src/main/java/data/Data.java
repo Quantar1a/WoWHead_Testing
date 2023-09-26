@@ -8,4 +8,9 @@ import tools.anotations.UpdatePoint;
 public class Data
 {
     final String WOWHEAD_URL = "https://www.wowhead.com";
+
+    public String getWOWHEAD_URL()
+    {
+        return WOWHEAD_URL;
+    }
 }
