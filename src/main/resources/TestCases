@@ -1,0 +1,19 @@
+Testcase #1 "Blue Tracker test"
+- Go to mainpage "https://www.wowhead.com/wow";
+- Make sure that the Blue Tracker contains elements;
+- Click to "Blue Tracker"
+- Check, the name of each (first ten) subjects coincides with title inside news;
+
+Testcase #2 "Recent news test"
+
+
+
+
+
+Testcase #3 "Pinned news test"
+
+
+
+
+
+Testcase #4 "Wow news test"

@@ -1,4 +1,4 @@
-package tests.classGuide;
+package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
@@ -25,3 +25,4 @@ public class ClassGuideTest extends BaseTestClass
         new HeaderPage().returnToMain();
     }
 }
+

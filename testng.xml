@@ -2,10 +2,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Quantaria/IdeaProjects/WoWHead_Testing">
-        <classes><class name="tests.classGuide.ClassGuideTest">
-            <methods><include name="test"/>
-            </methods>
-        </class>
+        <classes>
+            <class name="tests.ClassGuideTest">
+                <methods>
+                    <include name="test"/>
+                </methods>
+            </class>
+            <class name="tests.MainPageTest">
+                <methods>
+                    <include name="test"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
