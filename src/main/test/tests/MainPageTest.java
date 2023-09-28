@@ -2,50 +2,65 @@ package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.realPages.BlueTrackerPage;
 import pages.realPages.HeaderPage;
 import pages.realPages.MainPage;
 import tools.Actions;
 import tools.anotations.Description;
+import tools.anotations.UpdatePoint;
+import tools.enums.MainPageElements;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@UpdatePoint("28.09.2023")
+@Description("""
+        
+        """)
 public class MainPageTest extends BaseTestClass
 {
     Data data = new Data();
+    MainPage mainPage;
 
     @BeforeTest
     public void beforeTest()
     {
         new Actions(webDriver)
-                .open(data.getWOWHEAD_URL())
-                .selectBlueTracker();
+                .open(data.getWOWHEAD_URL());
     }
 
-    @Description("""
-            According to testcase #1"
-            Check is Blue Tracker list contains any element
-            """)
-    @Test
-    public void blueTrackerPresenceCheck()
-    {
-        Assert.assertTrue(new MainPage().blueTrackerPresence());
-    }
-
-    @DataProvider(name = "provider")
-    public Object[][] parameters()
-    {
+    @DataProvider(name = "listOfContainers")
+    public Object[][] containers() {
         return new Object[][] {
-                {0},{1}, {2}, {3},{4},{5}, {6},{7}, {8}, {9}
+                {MainPageElements.BLUE_TRACKER},
+                {MainPageElements.ALL_NEWS},
+                {MainPageElements.PINNED_NEWS},
+                {MainPageElements.RECENT_NEWS}
         };
     }
 
-    @Description("According to testcase #1")
-    @Test (dataProvider = "provider")
-    public void blueTrackerTest(int index)
+    @Description("""
+            According to Testcase #1-4
+            """)
+    @Test(dataProvider = "listOfContainers")
+    public void checkIfContainerIsNotEmpty(MainPageElements container)
     {
-        Assert.assertTrue(new BlueTrackerPage().selectAndCheckBlueTracker(index));
+        mainPage = new MainPage();
+        Assert.assertTrue(mainPage.checkIfListOfElementsIsNotEmpty(mainPage.selectList(container)));
     }
+
+//    @Test
+//    public void checkRecentNewsNames()
+//    {
+//        mainPage = new MainPage();
+//        List <WebElement> webElements = mainPage.selectList(MainPageElements.RECENT_NEWS);
+//        ArrayList<Boolean> list = mainPage.checkContentsList();
+//        for (boolean value: list) {
+//            Assert.assertTrue(value);
+//        }
+//    }
 
 
     @AfterTest

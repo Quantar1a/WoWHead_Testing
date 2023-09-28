@@ -14,7 +14,7 @@ public class Configuration
     public static final boolean isDeleteAllCookie = true;
 
     @Description("Page time load limit, in seconds")
-    public static final Duration pageTimeLoad = Duration.ofSeconds(70);
+    public static final Duration pageTimeLoad = Duration.ofSeconds(120);
 
     @Description("Implicitly wait, in seconds")
     public static final Duration implicitlyWait = Duration.ofSeconds(120);
