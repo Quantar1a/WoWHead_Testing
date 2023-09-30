@@ -23,7 +23,7 @@ public class MainPage extends BasePage
         PageFactory.initElements(driver, this);
     }
 
-    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     private final By recentNewsElements = By.xpath("//div[@data-type='news']//div[@class='news-recent-posts-rows-row']");
     private final By pinnedNewsElements = By.xpath("//div[@data-pinned='true']//div[@class='news-list-card']");
