@@ -14,7 +14,16 @@ Testcase #4 "All news test"
 - Go to mainpage "https://www.wowhead.com/wow";
 - Make sure that the "All news" contains elements;
 
-Testcase #5 "Blue Tracker  page test"
+Testcase #5 "Blue Tracker test (on main page)"
 - Go to mainpage "https://www.wowhead.com/wow";
-- Click to "Blue Tracker"
-- Check, the name of each (first ten) subjects coincides with title inside news;
+- Remember the news name;
+- Click to the "Blue Tracker" news.
+- Compare remembered string with title inside news
+- Do it for all list
+
+Testcase #6 "Recent news test (on main page)"
+- Go to mainpage "https://www.wowhead.com/wow";
+- Remember the news name;
+- Click to the "Recent news" news.
+- Compare remembered string with title inside news
+- Do it for all list
