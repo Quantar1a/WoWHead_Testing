@@ -2,6 +2,7 @@ package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.realPages.HeaderPage;
@@ -10,6 +11,8 @@ import tools.classes.Actions;
 import tools.anotations.Description;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
+
+import java.util.List;
 
 @UpdatePoint("28.09.2023")
 @Description("""
@@ -47,17 +50,27 @@ public class MainPageTest extends BaseTestClass
         Assert.assertTrue(mainPage.checkIfListOfElementsIsNotEmpty(mainPage.selectList(container)));
     }
 
-//    @Test
-//    public void checkRecentNewsNames()
-//    {
-//        mainPage = new MainPage();
-//        List <WebElement> webElements = mainPage.selectList(MainPageElements.RECENT_NEWS);
-//        ArrayList<Boolean> list = mainPage.checkContentsList();
-//        for (boolean value: list) {
-//            Assert.assertTrue(value);
-//        }
-//    }
+    @DataProvider(name = "listOfRecentNews")
+    public Object[][] listOfRecentNews() {
+        mainPage = new MainPage();
+        List<WebElement> list = mainPage.selectList(MainPageElements.RECENT_NEWS);
+        Object[][] obj = new Object[list.size()][1];
 
+        for (int i = 0; i < list.size(); i++) {
+            obj[i][0] = i;
+        }
+
+        return obj;
+    }
+
+    @Description("""
+            According to Testcase #6
+            """)
+    @Test(dataProvider = "listOfRecentNews")
+    public void checkRecentNewsNames(int index)
+    {
+        Assert.assertTrue(new MainPage().checkContents(index, MainPageElements.RECENT_NEWS));
+    }
 
     @AfterTest
     public void afterTest()

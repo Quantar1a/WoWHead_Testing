@@ -23,8 +23,6 @@ public class RecentNewsPage extends BasePage
 
     public String returnTitleName()
     {
-        String titleText = wait.until(ExpectedConditions.visibilityOf(titleElement)).getText();;
-        driver.navigate().back();
-        return titleText;
+        return wait.until(ExpectedConditions.visibilityOf(titleElement)).getText();
     }
 }

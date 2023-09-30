@@ -12,7 +12,6 @@ import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -62,21 +61,15 @@ public class MainPage extends BasePage
         return !(list.isEmpty());
     }
 
-//    public ArrayList<Boolean> checkContentsList ()
-//    {
-//        List<WebElement> list = driver.findElements(recentNewsElements);
-//        ArrayList<Boolean> result = new ArrayList<>();
-//        String nameInsidePage;
-//        String nameInList;
-//
-//        for (WebElement element : list) {
-//            nameInList = wait.until(ExpectedConditions.elementToBeClickable(element)).getText();
-//            element.click();
-//            wait.until(ExpectedConditions.invisibilityOf(element));
-//            nameInsidePage = new RecentNewsPage().returnTitleName();
-//            result.add(nameInList.contains(nameInsidePage));
-//        }
-//
-//        return result;
-//    }
+    public boolean checkContents (int index, MainPageElements element)
+    {
+        boolean result = false;
+        List<WebElement> list = this.selectList(element);
+        WebElement elem = list.get(index);
+        String nameInList = elem.getText();
+        elem.click();
+        wait.until(ExpectedConditions.invisibilityOf(elem));
+        String nameInsideNews = new RecentNewsPage().returnTitleName();
+        return nameInList.contains(nameInsideNews);
+    }
 }
