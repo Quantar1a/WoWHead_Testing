@@ -2,18 +2,14 @@ package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.realPages.HeaderPage;
 import pages.realPages.MainPage;
-import tools.Actions;
+import tools.classes.Actions;
 import tools.anotations.Description;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @UpdatePoint("28.09.2023")
 @Description("""

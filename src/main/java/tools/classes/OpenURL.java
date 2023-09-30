@@ -1,4 +1,4 @@
-package tools;
+package tools.classes;
 
 import pages.realPages.MainPage;
 import tools.anotations.UpdatePoint;

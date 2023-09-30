@@ -5,7 +5,7 @@ import data.Data;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 import pages.realPages.HeaderPage;
-import tools.Actions;
+import tools.classes.Actions;
 
 public class ClassGuideTest extends BaseTestClass
 {

@@ -1,4 +1,4 @@
-package tools;
+package tools.classes;
 
 import org.openqa.selenium.WebDriver;
 import pages.realPages.MainPage;
