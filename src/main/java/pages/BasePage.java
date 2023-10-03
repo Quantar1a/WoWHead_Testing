@@ -20,16 +20,4 @@ public abstract class BasePage
         element.click();
         return this;
     }
-
-    public BasePage sendKeysInElement(WebElement element, String string)
-    {
-        element.sendKeys(string);
-        return this;
-    }
-
-    public BasePage sendSpecificKeys(WebElement element, Keys keys)
-    {
-        element.sendKeys(keys);
-        return this;
-    }
 }

@@ -2,27 +2,44 @@ package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.*;
 import pages.realPages.HeaderPage;
+import pages.realPages.MainPage;
 import tools.classes.Actions;
+import tools.enums.Specializations;
 
 public class ClassGuideTest extends BaseTestClass
 {
-    Data data = new Data();
-
-    @Test
-    public void test()
+    @DataProvider(name = "provider")
+    public Object[][] provider()
     {
-        new Actions(webDriver)
-                .open(data.getWOWHEAD_URL())
-                .selectBloodDeathKnight();
+        return new Object[][]
+        {
+                {Specializations.BLOOD_DEATH_KNIGHT},
+                {Specializations.PROTECTION_WARRIOR},
+                {Specializations.RESTORATION_DRUID}
+        };
     }
 
-    @AfterTest
+    @BeforeTest
+    public void beforeTest()
+    {
+        new Actions(webDriver)
+                .open(new Data().getWOWHEAD_URL());
+    }
+
+    @Test(dataProvider = "provider")
+    public void test(Specializations spec)
+    {
+        Assert.assertTrue(new MainPage()
+                .clickToSpecificSpecialization(spec)
+                .getTitleName());
+    }
+
+    @AfterMethod
     public void afterTest()
     {
         new HeaderPage().returnToMain();
     }
 }
-
