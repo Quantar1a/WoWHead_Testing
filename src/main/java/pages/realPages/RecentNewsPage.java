@@ -16,7 +16,7 @@ public class RecentNewsPage extends BasePage
         PageFactory.initElements(driver, this);
     }
 
-    private WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @FindBy(xpath = "//h1[@class='heading-size-1']")
     private WebElement titleElement;
