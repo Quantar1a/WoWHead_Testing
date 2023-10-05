@@ -3,7 +3,6 @@ package pages.realPages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import tools.anotations.Description;
@@ -31,7 +30,7 @@ public class MainPage extends BasePage
     @FindBy(xpath = "//h1[@class='heading-size-1 guide-content-title-favorite']")
     private WebElement title;
 
-    @FindBy(xpath = "//div[@data-type='news']//div[@class='news-recent-posts-rows-row']")
+    @FindBy(xpath = "//div[@data-type='news']//div[@class='news-recent-posts-rows-row']//a")
     private List<WebElement> recentNewsList;
 
     @FindBy(xpath = "//div[@data-pinned='true']//div[@class='news-list-card']")
@@ -40,7 +39,7 @@ public class MainPage extends BasePage
     @FindBy(xpath = "//div[@data-zaf-dynamic='list']/div")
     private List<WebElement> allNewsList;
 
-    @FindBy(xpath = "//a[contains(@href, '/blue-tracker/topic/')]")
+    @FindBy(xpath = "//a[contains(@href, '/blue-tracker/')]")
     private List<WebElement> blueTrackerList;
 
     @FindBy(xpath = "//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/classes/')]")
@@ -58,6 +57,8 @@ public class MainPage extends BasePage
             case PINNED_NEWS -> list = pinnedNewsList;
             case RECENT_NEWS -> list = recentNewsList;
             case BLUE_TRACKER -> list = blueTrackerList;
+            case PROFESSIONS -> list = professionsList;
+            case SPECIALIZATIONS -> list = specializationsList;
         }
         return list;
     }
@@ -70,18 +71,7 @@ public class MainPage extends BasePage
         return !(list.isEmpty());
     }
 
-    public boolean checkContents (int index, MainPageElements element)
-    {
-        List<WebElement> list = this.selectList(element);
-        WebElement elem = list.get(index);
-        String nameInList = elem.getText();
-        elem.click();
-        wait.until(ExpectedConditions.invisibilityOf(elem));
-        String nameInsideNews = new RecentNewsPage().returnTitleName();
-        return nameInList.contains(nameInsideNews);
-    }
-
-    public HashMap<Professions, WebElement> getProfessionSet()
+    public WebElement getProfessionMap(Professions prof)
     {
         ArrayList<Professions> professions = new ArrayList<>(List.of(Professions.values()));
         HashMap<Professions, WebElement> map = new HashMap<>();
@@ -90,10 +80,10 @@ public class MainPage extends BasePage
             map.put(professions.get(i), professionsList.get(i));
         }
 
-        return map;
+        return map.get(prof);
     }
 
-    public HashMap<Specializations, WebElement> getSpecializationSet()
+    public WebElement getSpecializationMap(Specializations spec)
     {
         ArrayList<Specializations> specializations = new ArrayList<>(List.of(Specializations.values()));
         HashMap<Specializations, WebElement> map = new HashMap<>();
@@ -102,24 +92,17 @@ public class MainPage extends BasePage
             map.put(specializations.get(i), specializationsList.get(i));
         }
 
-        return map;
-    }
-
-    public MainPage clickToSpecificSpecialization(Specializations spec)
-    {
-        this.getSpecializationSet().get(spec).click();
-        return this;
-    }
-
-    public MainPage clickToSpecificProfession(Professions prof)
-    {
-        this.getSpecializationSet().get(prof).click();
-        return this;
+        return map.get(spec);
     }
 
     public boolean getTitleName()
     {
         System.out.println(title.getText());
         return title.isDisplayed();
+    }
+
+    public void clickToElementInList(int index, List<WebElement> list)
+    {
+        list.get(index).click();
     }
 }

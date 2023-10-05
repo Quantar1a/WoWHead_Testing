@@ -1,18 +1,14 @@
-Testcase #1 "Blue Tracker test (on main page)"
-- Go to mainpage "https://www.wowhead.com/wow";
-- Make sure that the Blue Tracker contains elements;
+Testcase #1
 
-Testcase #2 "Pinned News test"
-- Go to mainpage "https://www.wowhead.com/wow";
-- Make sure that the "Pinned news" contains elements;
 
-Testcase #3 "Recent News test"
-- Go to mainpage "https://www.wowhead.com/wow";
-- Make sure that the Recent News contains elements;
+Testcase #2
 
-Testcase #4 "All news test"
-- Go to mainpage "https://www.wowhead.com/wow";
-- Make sure that the "All news" contains elements;
+
+Testcase #3
+
+
+Testcase #4
+
 
 Testcase #5 "Blue Tracker test (on main page)"
 - Go to mainpage "https://www.wowhead.com/wow";
