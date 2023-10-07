@@ -7,5 +7,7 @@ public enum MainPageElements
     ALL_NEWS,
     PINNED_NEWS,
     SPECIALIZATIONS,
-    PROFESSIONS
+    PROFESSIONS,
+    EU_REALM,
+    NA_REALM
 }

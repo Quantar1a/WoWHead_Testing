@@ -2,6 +2,7 @@ package tests;
 
 import baseTest.BaseTestClass;
 import data.Data;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -14,7 +15,7 @@ import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 
-@UpdatePoint("05.10.2023")
+@UpdatePoint("07.10.2023")
 public class MainPageChecksTest extends BaseTestClass
 {
     Data data = new Data();
@@ -47,6 +48,28 @@ public class MainPageChecksTest extends BaseTestClass
     {
         mainPage = new MainPage();
         Assert.assertTrue(mainPage.checkIfListOfElementsIsNotEmpty(mainPage.selectList(container)));
+    }
+
+    @DataProvider(name = "realms")
+    public Object[][] realms()
+    {
+        return new Object[][]
+        {
+            {MainPageElements.NA_REALM},
+            {MainPageElements.EU_REALM}
+        };
+    }
+
+    @Description("""
+            According to Testcheck #7
+            """)
+    @Test(dataProvider = "realms")
+    public void checkTokenPrice(MainPageElements element)
+    {
+        mainPage = new MainPage();
+        WebElement token = mainPage.clickToSwitcherAndGetToken(element);
+        System.out.println("Current token price in " + element.name() + " is " + token.getText() + " gold");
+        Assert.assertTrue(token.isDisplayed());
     }
 
     @AfterTest

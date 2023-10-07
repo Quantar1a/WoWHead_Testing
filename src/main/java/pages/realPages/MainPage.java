@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-@UpdatePoint("04.10.2023")
+@UpdatePoint("07.10.2023")
 public class MainPage extends BasePage
 {
     public MainPage()
@@ -47,6 +47,37 @@ public class MainPage extends BasePage
 
     @FindBy(xpath = "//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/professions/')]")
     private List <WebElement> professionsList;
+
+    @FindBy(xpath = "//a[@class='switcher-choice'][text()='NA']")
+    private WebElement switcherToNARealm;
+
+    @FindBy(xpath = "//a[@class='switcher-choice'][text()='EU']")
+    private WebElement switcherToEURealm;
+
+    @FindBy(xpath = "//section[@id='EU-group-wow-token-price']//span[@class='moneygold']")
+    private WebElement tokenPriceEU;
+
+    @FindBy(xpath = "//section[@id='US-group-wow-token-price']//span[@class='moneygold']")
+    private WebElement tokenPriceUS;
+
+    public WebElement clickToSwitcherAndGetToken(MainPageElements element)
+    {
+        WebElement switcher = null;
+        WebElement token = null;
+
+        switch (element) {
+            case NA_REALM -> {
+                    switcher = switcherToNARealm;
+                    token = tokenPriceUS;
+            }
+            case EU_REALM ->{
+                    switcher = switcherToEURealm;
+                    token = tokenPriceEU;
+            }
+        }
+        switcher.click();
+        return token;
+    }
 
     public List<WebElement> selectList(MainPageElements element)
     {
