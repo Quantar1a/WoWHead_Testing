@@ -19,7 +19,7 @@ public class HeaderPage extends BasePage
         PageFactory.initElements(driver, this);
     }
 
-    WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    private final WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(60));
     @FindBy(xpath = "//a[@class='header-logo']")
     private WebElement wowHeadLogo;
 

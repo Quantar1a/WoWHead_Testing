@@ -9,20 +9,20 @@ import pages.BasePage;
 
 import java.time.Duration;
 
-public class RecentNewsPage extends BasePage
+public class BlueTrackerPage extends BasePage
 {
-    public RecentNewsPage()
+    public BlueTrackerPage()
     {
         PageFactory.initElements(driver, this);
     }
 
-    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+    private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-    @FindBy(xpath = "//h1[@class='heading-size-1']")
-    private WebElement titleElement;
+    @FindBy(xpath = "//h1[@class='heading-size-1']//span")
+    private WebElement title;
 
-    public String returnTitleName()
+    public  String getTitle()
     {
-        return wait.until(ExpectedConditions.visibilityOf(titleElement)).getText();
+        return wait.until(ExpectedConditions.visibilityOf(title)).getText();
     }
 }

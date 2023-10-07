@@ -1,10 +1,8 @@
 package pages.realPages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 import tools.anotations.Description;
@@ -19,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-@UpdatePoint("03.10.2023")
+@UpdatePoint("07.10.2023")
 public class MainPage extends BasePage
 {
     public MainPage()
@@ -30,26 +28,69 @@ public class MainPage extends BasePage
     private final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
     @FindBy(xpath = "//h1[@class='heading-size-1 guide-content-title-favorite']")
-    WebElement title;
+    private WebElement title;
 
-    private final By recentNewsElements = By.xpath("//div[@data-type='news']//div[@class='news-recent-posts-rows-row']");
-    private final By pinnedNewsElements = By.xpath("//div[@data-pinned='true']//div[@class='news-list-card']");
-    private final By allNewsElements = By.xpath("//div[@data-zaf-dynamic='list']/div");
-    private final By blueTrackerElements = By.xpath("//a[contains(@href, '/blue-tracker/topic/')]");
-    private final By specializationsElement = By.xpath("//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/classes/')]");
-    private final By professionsElement = By.xpath("//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/professions/')]");
+    @FindBy(xpath = "//div[@data-type='news']//div[@class='news-recent-posts-rows-row']//a")
+    private List<WebElement> recentNewsList;
+
+    @FindBy(xpath = "//div[@data-pinned='true']//div[@class='news-list-card']")
+    private List<WebElement> pinnedNewsList;
+
+    @FindBy(xpath = "//div[@data-zaf-dynamic='list']/div")
+    private List<WebElement> allNewsList;
+
+    @FindBy(xpath = "//a[contains(@href, '/blue-tracker/')]")
+    private List<WebElement> blueTrackerList;
+
+    @FindBy(xpath = "//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/classes/')]")
+    private List <WebElement> specializationsList;
+
+    @FindBy(xpath = "//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/guide/professions/')]")
+    private List <WebElement> professionsList;
+
+    @FindBy(xpath = "//a[@class='switcher-choice'][text()='NA']")
+    private WebElement switcherToNARealm;
+
+    @FindBy(xpath = "//a[@class='switcher-choice'][text()='EU']")
+    private WebElement switcherToEURealm;
+
+    @FindBy(xpath = "//section[@id='EU-group-wow-token-price']//span[@class='moneygold']")
+    private WebElement tokenPriceEU;
+
+    @FindBy(xpath = "//section[@id='US-group-wow-token-price']//span[@class='moneygold']")
+    private WebElement tokenPriceUS;
+
+    public WebElement clickToSwitcherAndGetToken(MainPageElements element)
+    {
+        WebElement switcher = null;
+        WebElement token = null;
+
+        switch (element) {
+            case NA_REALM -> {
+                    switcher = switcherToNARealm;
+                    token = tokenPriceUS;
+            }
+            case EU_REALM ->{
+                    switcher = switcherToEURealm;
+                    token = tokenPriceEU;
+            }
+        }
+        switcher.click();
+        return token;
+    }
 
     public List<WebElement> selectList(MainPageElements element)
     {
-        By locator = null;
-        switch (element) {
-            case ALL_NEWS -> locator = allNewsElements;
-            case PINNED_NEWS -> locator = pinnedNewsElements;
-            case RECENT_NEWS -> locator = recentNewsElements;
-            case BLUE_TRACKER -> locator = blueTrackerElements;
-        }
+        List <WebElement> list = null;
 
-        List <WebElement> list = driver.findElements(locator);
+        switch (element) {
+            case ALL_NEWS -> list = allNewsList;
+            case PINNED_NEWS -> list = pinnedNewsList;
+            case RECENT_NEWS -> list = recentNewsList;
+            case BLUE_TRACKER -> list = blueTrackerList;
+            case PROFESSIONS -> list = professionsList;
+            case SPECIALIZATIONS -> list = specializationsList;
+        }
         return list;
     }
 
@@ -61,58 +102,38 @@ public class MainPage extends BasePage
         return !(list.isEmpty());
     }
 
-    public boolean checkContents (int index, MainPageElements element)
+    public WebElement getProfessionMap(Professions prof)
     {
-        List<WebElement> list = this.selectList(element);
-        WebElement elem = list.get(index);
-        String nameInList = elem.getText();
-        elem.click();
-        wait.until(ExpectedConditions.invisibilityOf(elem));
-        String nameInsideNews = new RecentNewsPage().returnTitleName();
-        return nameInList.contains(nameInsideNews);
-    }
-
-    public HashMap<Professions, WebElement> getProfessionSet()
-    {
-        ArrayList<Professions> professionList = new ArrayList<>(List.of(Professions.values()));
-        List<WebElement> webElementsList = driver.findElements(professionsElement);
+        ArrayList<Professions> professions = new ArrayList<>(List.of(Professions.values()));
         HashMap<Professions, WebElement> map = new HashMap<>();
 
-        for (int i = 0; i < webElementsList.size(); i++) {
-            map.put(professionList.get(i), webElementsList.get(i));
+        for (int i = 0; i < professionsList.size(); i++) {
+            map.put(professions.get(i), professionsList.get(i));
         }
 
-        return map;
+        return map.get(prof);
     }
-    public HashMap<Specializations, WebElement> getSpecializationSet()
-    {
-        ArrayList<Specializations> specializationsList = new ArrayList<>(List.of(Specializations.values()));
-        List<WebElement> webElementsList = driver.findElements(specializationsElement);
 
+    public WebElement getSpecializationMap(Specializations spec)
+    {
+        ArrayList<Specializations> specializations = new ArrayList<>(List.of(Specializations.values()));
         HashMap<Specializations, WebElement> map = new HashMap<>();
 
-        for (int i = 0; i < webElementsList.size(); i++) {
-            map.put(specializationsList.get(i), webElementsList.get(i));
+        for (int i = 0; i < specializationsList.size(); i++) {
+            map.put(specializations.get(i), specializationsList.get(i));
         }
 
-        return map;
-    }
-
-    public MainPage clickToSpecificSpecialization(Specializations spec)
-    {
-        this.getSpecializationSet().get(spec).click();
-        return this;
-    }
-
-    public MainPage clickToSpecificProfession(Professions prof)
-    {
-        this.getSpecializationSet().get(prof).click();
-        return this;
+        return map.get(spec);
     }
 
     public boolean getTitleName()
     {
         System.out.println(title.getText());
         return title.isDisplayed();
+    }
+
+    public void clickToElementInList(int index, List<WebElement> list)
+    {
+        list.get(index).click();
     }
 }

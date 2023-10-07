@@ -4,21 +4,19 @@ import baseTest.BaseTestClass;
 import data.Data;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import pages.realPages.HeaderPage;
 import pages.realPages.MainPage;
-import tools.classes.Actions;
 import tools.anotations.Description;
 import tools.anotations.UpdatePoint;
+import tools.classes.Actions;
 import tools.enums.MainPageElements;
 
-import java.util.List;
-
-@UpdatePoint("28.09.2023")
-@Description("""
-        
-        """)
-public class MainPageTest extends BaseTestClass
+@UpdatePoint("07.10.2023")
+public class MainPageChecksTest extends BaseTestClass
 {
     Data data = new Data();
     MainPage mainPage;
@@ -36,12 +34,14 @@ public class MainPageTest extends BaseTestClass
                 {MainPageElements.BLUE_TRACKER},
                 {MainPageElements.ALL_NEWS},
                 {MainPageElements.PINNED_NEWS},
-                {MainPageElements.RECENT_NEWS}
+                {MainPageElements.RECENT_NEWS},
+                {MainPageElements.PROFESSIONS},
+                {MainPageElements.SPECIALIZATIONS}
         };
     }
 
     @Description("""
-            According to Testcase #1-4
+            According to TestChecks 1-6
             """)
     @Test(dataProvider = "listOfContainers")
     public void checkIfContainerIsNotEmpty(MainPageElements container)
@@ -50,26 +50,26 @@ public class MainPageTest extends BaseTestClass
         Assert.assertTrue(mainPage.checkIfListOfElementsIsNotEmpty(mainPage.selectList(container)));
     }
 
-    @DataProvider(name = "listOfRecentNews")
-    public Object[][] listOfRecentNews() {
-        mainPage = new MainPage();
-        List<WebElement> list = mainPage.selectList(MainPageElements.RECENT_NEWS);
-        Object[][] obj = new Object[list.size()][1];
-
-        for (int i = 0; i < list.size(); i++) {
-            obj[i][0] = i;
-        }
-
-        return obj;
+    @DataProvider(name = "realms")
+    public Object[][] realms()
+    {
+        return new Object[][]
+        {
+            {MainPageElements.NA_REALM},
+            {MainPageElements.EU_REALM}
+        };
     }
 
     @Description("""
-            According to Testcase #6
+            According to Testcheck #7
             """)
-    @Test(dataProvider = "listOfRecentNews")
-    public void checkRecentNewsNames(int index)
+    @Test(dataProvider = "realms")
+    public void checkTokenPrice(MainPageElements element)
     {
-        Assert.assertTrue(new MainPage().checkContents(index, MainPageElements.RECENT_NEWS));
+        mainPage = new MainPage();
+        WebElement token = mainPage.clickToSwitcherAndGetToken(element);
+        System.out.println("Current token price in " + element.name() + " is " + token.getText() + " gold");
+        Assert.assertTrue(token.isDisplayed());
     }
 
     @AfterTest
