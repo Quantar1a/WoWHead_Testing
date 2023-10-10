@@ -3,14 +3,10 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Quantaria/IdeaProjects/WoWHead_Testing">
         <classes>
-            <class name="tests.ClassGuideTest">
+            <class name="tests.TestChecks">
                 <methods>
                     <include name="test"/>
-                </methods>
-            </class>
-            <class name="tests.MainPageTest">
-                <methods>
-                    <include name="test"/>
+                    <include name="check"/>
                 </methods>
             </class>
         </classes>
