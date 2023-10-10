@@ -1,7 +1,8 @@
-1) check if list of Recent News presents on MainPage
-2) Check if list of BlueTracker presents on MainPage
-3) Check if list of Pinned News presents on MainPage
-4) Check if list of All News presents on MainPage
-5) Check if list of Professions presents on MainPage
-6) Check if list of Specialization present on MainPage
+1) check if list of Recent News presents on MainPage and contains any elements
+2) Check if list of BlueTracker presents on MainPage and contains any elements
+3) Check if list of Pinned News presents on MainPage and contains any elements
+4) Check if list of All News presents on MainPage and contains any elements
+5) Check if list of Professions presents on MainPage and contains any elements
+6) Check if list of Specialization present on MainPage and contains any elements
 7) Check if token price is displayed on MainPage in NA and EU realms
+8) Check if mythic affixes is present on MainPage in NA and EU realms
