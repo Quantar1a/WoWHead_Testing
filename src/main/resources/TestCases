@@ -1,23 +1,11 @@
-Testcase #1
-
-
-Testcase #2
-
-
-Testcase #3
-
-
-Testcase #4
-
-
-Testcase #5 "Blue Tracker test (on main page)"
+Testcase #1 "Blue Tracker test (on main page)"
 - Go to mainpage "https://www.wowhead.com/wow";
 - Remember the news name;
 - Click to the "Blue Tracker" news.
 - Compare remembered string with title inside news
 - Do it for all list
 
-Testcase #6 "Recent news test (on main page)"
+Testcase #2 "Recent news test (on main page)"
 - Go to mainpage "https://www.wowhead.com/wow";
 - Remember the news name;
 - Click to the "Recent news" news.

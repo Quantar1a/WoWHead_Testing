@@ -1,10 +1,10 @@
 package tools.enums;
 
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
 @UpdatePoint("23.09.2023")
-@Description("Enum of all classes")
+@MyDescription("Enum of all classes")
 public enum GameClasses
 {
     DEATH_KNIGHT,

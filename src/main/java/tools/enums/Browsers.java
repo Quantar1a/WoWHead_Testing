@@ -1,10 +1,10 @@
 package tools.enums;
 
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
 @UpdatePoint("21.09.2023")
-@Description("List of browsers")
+@MyDescription("List of browsers")
 public enum Browsers
 {
     MICROSOFT_EDGE,

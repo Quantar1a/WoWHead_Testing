@@ -1,9 +1,9 @@
 package tools.enums;
 
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
-@Description("Enum of all professions in game (actual)")
+@MyDescription("Enum of all professions in game (actual)")
 @UpdatePoint("09.19.2023")
 public enum Professions
 {
