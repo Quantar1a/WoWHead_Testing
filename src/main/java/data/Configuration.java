@@ -1,7 +1,7 @@
 package data;
 
 import org.openqa.selenium.Dimension;
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.enums.Browsers;
 import tools.enums.WindowMode;
@@ -9,27 +9,27 @@ import tools.enums.WindowMode;
 import java.time.Duration;
 
 @UpdatePoint("21.09.2023")
-@Description("Configuration file")
+@MyDescription("Configuration file")
 public class Configuration
 {
-    @Description("If true - delete cookie")
+    @MyDescription("If true - delete cookie")
     public static final boolean isDeleteAllCookie = true;
 
-    @Description("Page time load limit, in seconds")
+    @MyDescription("Page time load limit, in seconds")
     public static final Duration pageTimeLoad = Duration.ofSeconds(120);
 
-    @Description("Implicitly wait, in seconds")
+    @MyDescription("Implicitly wait, in seconds")
     public static final Duration implicitlyWait = Duration.ofSeconds(120);
 
-    @Description("Choose specific browser")
+    @MyDescription("Choose specific browser")
     public static final Browsers activeBrowser = Browsers.GOOGLE_CHROME;
 
-    @Description("""
+    @MyDescription("""
             Select window mode
             """)
     public static final WindowMode windowMode = WindowMode.MAXIMIZE;
 
-    @Description("""
+    @MyDescription("""
             Set window size
             Used only when WindowMode is CUSTOM
             """)

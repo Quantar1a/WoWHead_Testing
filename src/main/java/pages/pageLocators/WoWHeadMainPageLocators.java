@@ -8,7 +8,7 @@ import tools.anotations.UpdatePoint;
 
 import java.util.List;
 
-@UpdatePoint("10.10.2023")
+@UpdatePoint("12.10.2023")
 public class WoWHeadMainPageLocators extends BasePage implements PageLocators
 {
     public WoWHeadMainPageLocators()
@@ -16,7 +16,7 @@ public class WoWHeadMainPageLocators extends BasePage implements PageLocators
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[@class='news-recent-posts-rows-row'][@data-visible='true']")
+    @FindBy(xpath = "//div[@class='news-recent-posts-rows-row'][@data-visible='true']//a")
     private List<WebElement> recentNewsList;
 
     @FindBy(xpath = "//div[@class='news-recent-posts-rows-row']//a[contains(@class, 'blizzard-blue')]")

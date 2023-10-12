@@ -1,11 +1,12 @@
 package data;
 
 import org.testng.annotations.DataProvider;
+import pages.pageLocators.WoWHeadMainPageLocators;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
 import tools.enums.TodayInWoWSwitcher;
 
-@UpdatePoint("10.10.2023")
+@UpdatePoint("12.10.2023")
 public class DataProviders
 {
     @DataProvider(name = "pageElements")
@@ -28,5 +29,17 @@ public class DataProviders
                 {TodayInWoWSwitcher.NA_REALM},
                 {TodayInWoWSwitcher.EU_REALM}
         };
+    }
+
+    @DataProvider(name = "indexes")
+    public Object[][] indexes()
+    {
+        Object[][] objects = new Object[new WoWHeadMainPageLocators().getRecentNewsList().size()][1];
+
+        for (int i = 0; i < objects.length; i++) {
+            objects[i][0] = i;
+        }
+
+        return objects;
     }
 }

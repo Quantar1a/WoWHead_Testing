@@ -3,18 +3,21 @@ package tests;
 import baseTest.BaseTestClass;
 import data.Data;
 import data.DataProviders;
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.pageActions.WoWHeadMainPageActions;
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
+import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 import tools.enums.TodayInWoWSwitcher;
 
 import java.util.List;
 
+@UpdatePoint("10.10.2023")
 public class TestChecks extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
@@ -25,9 +28,10 @@ public class TestChecks extends BaseTestClass
                 .open(new Data().getWOWHEAD_URL());
     }
 
-    @Description("""
+    @MyDescription("""
             According to Testchechs #1-6
             """)
+    @Description("Check visible of elements on page")
     @Test(dataProvider = "pageElements", dataProviderClass = DataProviders.class)
     public void checkWebElementsList(MainPageElements element)
     {
@@ -41,9 +45,10 @@ public class TestChecks extends BaseTestClass
         }
     }
 
-    @Description("""
+    @MyDescription("""
             According to Testchecks #7
             """)
+    @Description("Check token price")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkToken(TodayInWoWSwitcher switcher)
     {
@@ -53,9 +58,10 @@ public class TestChecks extends BaseTestClass
         Assert.assertTrue(woWHeadMainPageActions.isTokenPresent(switcher));
     }
 
-    @Description("""
+    @MyDescription("""
             According to Testchecks #8
             """)
+    @Description("Check if mythic affixes is displayed")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)
     {

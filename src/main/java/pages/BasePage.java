@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.WebDriver;
-import tools.anotations.Description;
+import tools.anotations.MyDescription;
 
-@Description("Base class for all pages")
+@MyDescription("Base class for all pages")
 public abstract class BasePage
 {
     protected static WebDriver driver;

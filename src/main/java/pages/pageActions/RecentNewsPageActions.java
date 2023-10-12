@@ -4,7 +4,7 @@ import pages.BasePage;
 import pages.pageLocators.RecentNewsPageLocators;
 import tools.anotations.UpdatePoint;
 
-@UpdatePoint("10.10.2023")
+@UpdatePoint("12.10.2023")
 public class RecentNewsPageActions extends BasePage implements PageActions
 {
     private RecentNewsPageLocators recentNewsPageLocators;
@@ -12,5 +12,10 @@ public class RecentNewsPageActions extends BasePage implements PageActions
     public RecentNewsPageActions()
     {
         recentNewsPageLocators = new RecentNewsPageLocators();
+    }
+
+    public String getTitleText()
+    {
+        return recentNewsPageLocators.getNewsTitle().getText();
     }
 }

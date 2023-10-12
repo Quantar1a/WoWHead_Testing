@@ -9,7 +9,7 @@ import tools.enums.TodayInWoWSwitcher;
 
 import java.util.List;
 
-@UpdatePoint("10.10.2023")
+@UpdatePoint("12.10.2023")
 public class WoWHeadMainPageActions extends BasePage implements PageActions
 {
     private WoWHeadMainPageLocators woWHeadMainPageLocators;
@@ -75,5 +75,27 @@ public class WoWHeadMainPageActions extends BasePage implements PageActions
             case EU_REALM -> listOfAffixes = woWHeadMainPageLocators.getEUAffixes();
         }
         return listOfAffixes;
+    }
+
+    public String getWebElementText(WebElement element)
+    {
+        return element.getText();
+    }
+
+    public RecentNewsPageActions clickToWebRecentNewsElement(WebElement element)
+    {
+        element.click();
+        return new RecentNewsPageActions();
+    }
+
+    public BlueTrackerPageActions clickToBlueTrackerNewsElement(WebElement element)
+    {
+        element.click();
+        return new BlueTrackerPageActions();
+    }
+
+    public WebElement getWebElementFromList(int index, MainPageElements element)
+    {
+        return this.selectWebElementList(element).get(index);
     }
 }

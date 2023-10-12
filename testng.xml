@@ -9,6 +9,11 @@
                     <include name="check"/>
                 </methods>
             </class>
+            <class name="tests.TestClass">
+                <methods>
+                    <include name="compare"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
