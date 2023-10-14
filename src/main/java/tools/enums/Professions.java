@@ -18,6 +18,6 @@ public enum Professions
     JEWELCRAFTING,
     LEATHERWORKING,
     MINING,
-    SKINING,
+    SKINNING,
     TAILORING
 }

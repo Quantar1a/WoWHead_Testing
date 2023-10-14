@@ -19,7 +19,7 @@ public class WoWHeadMainPageLocators extends BasePage implements PageLocators
     @FindBy(xpath = "//div[@class='news-recent-posts-rows-row'][@data-visible='true']//a")
     private List<WebElement> recentNewsList;
 
-    @FindBy(xpath = "//div[@class='news-recent-posts-rows-row']//a[contains(@class, 'blizzard-blue')]")
+    @FindBy(xpath = "//a[contains(@href, '/blue-tracker/')]")
     private List <WebElement> blueTrackerNewsList;
 
     @FindBy(xpath = "//div[@class='news-content-spotlight-class-guides-icons']//a[contains(@href, '/classes/')]")

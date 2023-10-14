@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" name="C:/Users/Quantaria/IdeaProjects/WoWHead_Testing/testng.xml">
+        <classes>
+            <class name="UI.ClassGuideTest">
+                <methods>
+                    <include name="Test"/>
+                </methods>
+            </class>
+            <class name="UI.ProfessionGuideTest">
+                <methods>
+                    <include name="Test"/>
+                </methods>
+            </class>
+            <class name="UI.NewsTest">
+                <methods>
+                    <include name="compare"/>
+                </methods>
+            </class>
+            <class name="UI.WebElementsPresentsTest">
+                <methods>
+                    <include name="check"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

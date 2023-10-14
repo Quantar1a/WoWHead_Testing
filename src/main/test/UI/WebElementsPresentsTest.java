@@ -1,4 +1,4 @@
-package tests;
+package UI;
 
 import baseTest.BaseTestClass;
 import data.Data;
@@ -18,7 +18,7 @@ import tools.enums.TodayInWoWSwitcher;
 import java.util.List;
 
 @UpdatePoint("10.10.2023")
-public class TestChecks extends BaseTestClass
+public class WebElementsPresentsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
     @BeforeTest
