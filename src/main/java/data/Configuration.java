@@ -19,7 +19,7 @@ public class Configuration
     public static final Duration pageTimeLoad = Duration.ofSeconds(120);
 
     @MyDescription("Implicitly wait, in seconds")
-    public static final Duration implicitlyWait = Duration.ofSeconds(120);
+    public static final Duration implicitlyWait = Duration.ofSeconds(180);
 
     @MyDescription("Choose specific browser")
     public static final Browsers activeBrowser = Browsers.GOOGLE_CHROME;

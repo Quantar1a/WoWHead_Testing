@@ -17,7 +17,7 @@ import tools.enums.TodayInWoWSwitcher;
 
 import java.util.List;
 
-@UpdatePoint("10.10.2023")
+@UpdatePoint("16.10.2023")
 public class WebElementsPresentsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;

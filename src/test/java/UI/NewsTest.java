@@ -12,7 +12,7 @@ import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 
-@UpdatePoint("12.10.2023")
+@UpdatePoint("16.10.2023")
 public class NewsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;

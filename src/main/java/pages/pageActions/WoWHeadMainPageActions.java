@@ -10,12 +10,9 @@ import tools.enums.Professions;
 import tools.enums.Specializations;
 import tools.enums.TodayInWoWSwitcher;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-@UpdatePoint("12.10.2023")
+@UpdatePoint("16.10.2023")
 public class WoWHeadMainPageActions extends BasePage implements PageActions
 {
     private WoWHeadMainPageLocators woWHeadMainPageLocators;
@@ -138,7 +135,6 @@ public class WoWHeadMainPageActions extends BasePage implements PageActions
         for (int i = 0; i < list.size(); i++) {
             map.put(specializations.get(i), list.get(i));
         }
-
         return map;
     }
 

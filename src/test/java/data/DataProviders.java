@@ -11,7 +11,7 @@ import tools.enums.TodayInWoWSwitcher;
 import java.util.ArrayList;
 import java.util.List;
 
-@UpdatePoint("12.10.2023")
+@UpdatePoint("16.10.2023")
 public class DataProviders
 {
     @DataProvider(name = "pageElements")
@@ -67,7 +67,7 @@ public class DataProviders
         Object[][] obj = new Object[Specializations.values().length][1];
         ArrayList <Specializations> listOfSpecializations= new ArrayList<>(List.of(Specializations.values()));
 
-        for (int i = 0; i < Professions.values().length; i++) {
+        for (int i = 0; i < Specializations.values().length; i++) {
             obj[i][0] = listOfSpecializations.get(i);
         }
 

@@ -7,10 +7,13 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.pageActions.HeaderPageActions;
 import pages.pageActions.WoWHeadMainPageActions;
+import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.Specializations;
 
+@UpdatePoint("16.10.2023")
 public class ClassGuideTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
@@ -24,7 +27,7 @@ public class ClassGuideTest extends BaseTestClass
     @AfterMethod
     public void afterMethod()
     {
-        webDriver.navigate().back();
+        new HeaderPageActions().clickToLogo();
     }
 
     @Test(dataProvider = "specializations", dataProviderClass = DataProviders.class)
