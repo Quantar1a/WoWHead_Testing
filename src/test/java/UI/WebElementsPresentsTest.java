@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.pageActions.WoWHeadMainPageActions;
 import tools.anotations.MyDescription;
@@ -14,10 +15,12 @@ import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 import tools.enums.TodayInWoWSwitcher;
+import tools.listeners.CustomListener;
 
 import java.util.List;
 
-@UpdatePoint("16.10.2023")
+@Listeners(CustomListener.class)
+@UpdatePoint("17.10.2023")
 public class WebElementsPresentsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
@@ -72,7 +75,7 @@ public class WebElementsPresentsTest extends BaseTestClass
         Assert.assertFalse(listOfAffixes.isEmpty());
 
         for (WebElement affix : listOfAffixes) {
-            System.out.println(affix.getText());
+            System.out.print(affix.getText() + "  ");
             Assert.assertTrue(affix.isDisplayed());
         }
     }

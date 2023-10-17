@@ -11,7 +11,9 @@ import pages.pageActions.WoWHeadMainPageActions;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
+import tools.listeners.CustomListener;
 
+@Listeners(CustomListener.class)
 @UpdatePoint("16.10.2023")
 public class NewsTest extends BaseTestClass
 {

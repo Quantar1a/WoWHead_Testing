@@ -3,10 +3,10 @@
 <suite name="All Test Suite">
     <test verbose="2" name="C:/Users/Quantaria/IdeaProjects/WoWHead_Testing/testng.xml">
         <classes>
-            <class name="UI.ClassGuideTest"/>
-            <class name="UI.ProfessionGuideTest"/>
             <class name="UI.NewsTest"/>
             <class name="UI.WebElementsPresentsTest"/>
+            <class name="UI.ProfessionGuideTest"/>
+            <class name="UI.ClassGuideTest"/>
         </classes>
     </test>
 </suite>
