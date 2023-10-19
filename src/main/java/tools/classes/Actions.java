@@ -1,7 +1,7 @@
 package tools.classes;
 
 import org.openqa.selenium.WebDriver;
-import pages.pageActions.WoWHeadMainPageActions;
+import pages.pageActions.HeaderPageActions;
 import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
@@ -17,9 +17,9 @@ public class Actions implements OpenURL
     }
 
     @MyDescription("Open URL in browser")
-    public WoWHeadMainPageActions open(String URL)
+    public HeaderPageActions open(String URL)
     {
         driver.get(URL);
-        return new WoWHeadMainPageActions();
+        return new HeaderPageActions();
     }
 }

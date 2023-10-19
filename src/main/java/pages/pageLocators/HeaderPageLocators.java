@@ -17,6 +17,14 @@ public class HeaderPageLocators extends BasePage implements PageLocators
     @FindBy(xpath = "//a[@class='header-logo']")
     private WebElement woWHeadLogo;
 
+    @FindBy(xpath = "//button[@class='notifications-dialog-buttons-decline btn']")
+    private WebElement declineButtonOnNotification;
+
+    public WebElement getDeclineButtonOnNotification()
+    {
+        return declineButtonOnNotification;
+    }
+
     public WebElement getWoWHeadLogo()
     {
         return woWHeadLogo;

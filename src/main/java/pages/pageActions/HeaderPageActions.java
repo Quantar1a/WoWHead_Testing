@@ -18,4 +18,9 @@ public class HeaderPageActions extends BasePage implements PageActions
     {
         headerPageLocators.getWoWHeadLogo().click();
     }
+
+    public void declineNotifications()
+    {
+        headerPageLocators.getDeclineButtonOnNotification().click();
+    }
 }
