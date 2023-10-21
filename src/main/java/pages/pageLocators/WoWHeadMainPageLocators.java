@@ -8,7 +8,7 @@ import tools.anotations.UpdatePoint;
 
 import java.util.List;
 
-@UpdatePoint("12.10.2023")
+@UpdatePoint("21.10.2023")
 public class WoWHeadMainPageLocators extends BasePage implements PageLocators
 {
     public WoWHeadMainPageLocators()
@@ -51,6 +51,12 @@ public class WoWHeadMainPageLocators extends BasePage implements PageLocators
 
     @FindBy(xpath = "//section[contains(@id, 'US-group-mythicaffix-line-')]")
     private List<WebElement> NAAffixes;
+
+    @FindBy(xpath = "//div[@class='mapper-overlay']")
+    private WebElement map;
+
+    @FindBy(xpath = "//span[@class='mapper-map']//div[@class='pin']")
+    private List<WebElement> mapPoints;
 
     public List<WebElement> getRecentNewsList()
     {
@@ -110,5 +116,15 @@ public class WoWHeadMainPageLocators extends BasePage implements PageLocators
     public List<WebElement> getNAAffixes()
     {
         return NAAffixes;
+    }
+
+    public WebElement getMap()
+    {
+        return map;
+    }
+
+    public List<WebElement> getMapPoints()
+    {
+        return mapPoints;
     }
 }

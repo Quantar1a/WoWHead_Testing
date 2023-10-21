@@ -12,7 +12,7 @@ import tools.enums.TodayInWoWSwitcher;
 
 import java.util.*;
 
-@UpdatePoint("16.10.2023")
+@UpdatePoint("21.10.2023")
 public class WoWHeadMainPageActions extends BasePage implements PageActions
 {
     private WoWHeadMainPageLocators woWHeadMainPageLocators;
@@ -143,5 +143,15 @@ public class WoWHeadMainPageActions extends BasePage implements PageActions
     {
         this.getSpecializationMap().get(specialization).click();
         return new ClassGuidePageActions();
+    }
+
+    public boolean isMapPresent()
+    {
+        return woWHeadMainPageLocators.getMap().isDisplayed();
+    }
+
+    public int getMapPointCount()
+    {
+        return woWHeadMainPageLocators.getMapPoints().size();
     }
 }

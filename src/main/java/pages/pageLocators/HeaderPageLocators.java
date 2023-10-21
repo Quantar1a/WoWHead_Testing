@@ -6,7 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
 import tools.anotations.UpdatePoint;
 
-@UpdatePoint("10.10.2023")
+import java.util.List;
+
+@UpdatePoint("21.10.2023")
 public class HeaderPageLocators extends BasePage implements PageLocators
 {
     public HeaderPageLocators()
@@ -20,6 +22,9 @@ public class HeaderPageLocators extends BasePage implements PageLocators
     @FindBy(xpath = "//button[@class='notifications-dialog-buttons-decline btn']")
     private WebElement declineButtonOnNotification;
 
+    @FindBy(xpath = "//input[@name='q']")
+    private WebElement input;
+
     public WebElement getDeclineButtonOnNotification()
     {
         return declineButtonOnNotification;
@@ -28,5 +33,10 @@ public class HeaderPageLocators extends BasePage implements PageLocators
     public WebElement getWoWHeadLogo()
     {
         return woWHeadLogo;
+    }
+
+    public WebElement getInput()
+    {
+        return input;
     }
 }

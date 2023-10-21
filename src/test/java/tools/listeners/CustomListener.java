@@ -4,10 +4,12 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
+import tools.anotations.UpdatePoint;
 
 import java.util.Arrays;
 import java.util.Date;
 
+@UpdatePoint("21.10.2023")
 public class CustomListener implements ITestListener
 {
     Date startDate;
@@ -70,7 +72,7 @@ public class CustomListener implements ITestListener
             }
         }
 
-        System.out.println("Start time is " + startDate);
+        System.out.println("Start time: " + startDate);
     }
 
     @Override
@@ -78,7 +80,7 @@ public class CustomListener implements ITestListener
     {
         endDate = context.getEndDate();
         System.out.println("TestSuite " + context.getName() + " is finished.");
-        System.out.println("Finish time is " + endDate);
+        System.out.println("Finish time: " + endDate);
         long spentTime = (endDate.getTime() - startDate.getTime())/1000;
         System.out.print("Spent time for TestSuite " + context.getName() + ": ");
 
