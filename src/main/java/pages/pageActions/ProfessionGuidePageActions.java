@@ -13,4 +13,9 @@ public class ProfessionGuidePageActions extends BasePage implements PageActions
     {
         professionGuidePageLocators = new ProfessionGuidePageLocators();
     }
+
+    public String getTitleText()
+    {
+        return professionGuidePageLocators.getTitle().getText();
+    }
 }

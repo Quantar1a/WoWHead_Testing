@@ -1,4 +1,4 @@
-package tests;
+package UI;
 
 import baseTest.BaseTestClass;
 import data.Data;
@@ -11,9 +11,11 @@ import pages.pageActions.WoWHeadMainPageActions;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
+import tools.listeners.CustomListener;
 
-@UpdatePoint("12.10.2023")
-public class TestClass extends BaseTestClass
+@Listeners(CustomListener.class)
+@UpdatePoint("16.10.2023")
+public class NewsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
     @BeforeTest
@@ -47,7 +49,7 @@ public class TestClass extends BaseTestClass
 
     @Description("Check if news name equals with news name inside news page for BlueTracker news")
     @Test(dataProvider = "indexes", dataProviderClass = DataProviders.class)
-    public void compareBlueTrackerNEws(int index)
+    public void compareBlueTrackerNewsNames(int index)
     {
         woWHeadMainPageActions = new WoWHeadMainPageActions();
         WebElement element = woWHeadMainPageActions

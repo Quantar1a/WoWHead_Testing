@@ -4,7 +4,7 @@ import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
 @MyDescription("Enum of all specialization in game (actual)")
-@UpdatePoint("09.19.2023")
+@UpdatePoint("16.10.2023")
 public enum Specializations
 {
     BLOOD_DEATH_KNIGHT,
@@ -20,7 +20,7 @@ public enum Specializations
     DEVASTATION_EVOKER,
     PRESERVATION_EVOKER,
     BEAST_MASTERY_HUNTER,
-    MARKSMAN_HUNTER,
+    MARKSMANSHIP_HUNTER,
     SURVIVAL_HUNTER,
     ARCANE_MAGE,
     FIRE_MAGE,

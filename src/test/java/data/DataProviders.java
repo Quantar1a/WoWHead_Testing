@@ -4,9 +4,14 @@ import org.testng.annotations.DataProvider;
 import pages.pageLocators.WoWHeadMainPageLocators;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
+import tools.enums.Professions;
+import tools.enums.Specializations;
 import tools.enums.TodayInWoWSwitcher;
 
-@UpdatePoint("12.10.2023")
+import java.util.ArrayList;
+import java.util.List;
+
+@UpdatePoint("16.10.2023")
 public class DataProviders
 {
     @DataProvider(name = "pageElements")
@@ -41,5 +46,31 @@ public class DataProviders
         }
 
         return objects;
+    }
+
+    @DataProvider(name = "professions")
+    public Object[][] professions()
+    {
+        Object[][] obj = new Object[Professions.values().length][1];
+        ArrayList <Professions> listOfProfessions= new ArrayList<>(List.of(Professions.values()));
+
+        for (int i = 0; i < Professions.values().length; i++) {
+            obj[i][0] = listOfProfessions.get(i);
+        }
+
+        return obj;
+    }
+
+    @DataProvider(name = "specializations")
+    public Object[][] specializations()
+    {
+        Object[][] obj = new Object[Specializations.values().length][1];
+        ArrayList <Specializations> listOfSpecializations= new ArrayList<>(List.of(Specializations.values()));
+
+        for (int i = 0; i < Specializations.values().length; i++) {
+            obj[i][0] = listOfSpecializations.get(i);
+        }
+
+        return obj;
     }
 }

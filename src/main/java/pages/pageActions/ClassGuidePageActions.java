@@ -13,4 +13,9 @@ public class ClassGuidePageActions extends BasePage implements PageActions
     {
         classGuidePageLocators = new ClassGuidePageLocators();
     }
+
+    public String getTitleText()
+    {
+        return classGuidePageLocators.getTitle().getText();
+    }
 }

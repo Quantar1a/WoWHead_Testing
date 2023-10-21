@@ -1,4 +1,4 @@
-package tests;
+package UI;
 
 import baseTest.BaseTestClass;
 import data.Data;
@@ -7,6 +7,7 @@ import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.pageActions.WoWHeadMainPageActions;
 import tools.anotations.MyDescription;
@@ -14,11 +15,13 @@ import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 import tools.enums.TodayInWoWSwitcher;
+import tools.listeners.CustomListener;
 
 import java.util.List;
 
-@UpdatePoint("10.10.2023")
-public class TestChecks extends BaseTestClass
+@Listeners(CustomListener.class)
+@UpdatePoint("17.10.2023")
+public class WebElementsPresentsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
     @BeforeTest
@@ -72,7 +75,7 @@ public class TestChecks extends BaseTestClass
         Assert.assertFalse(listOfAffixes.isEmpty());
 
         for (WebElement affix : listOfAffixes) {
-            System.out.println(affix.getText());
+            System.out.print(affix.getText() + "  ");
             Assert.assertTrue(affix.isDisplayed());
         }
     }
