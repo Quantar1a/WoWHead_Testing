@@ -12,14 +12,16 @@ import tools.enums.TodayInWoWSwitcher;
 
 import java.util.*;
 
-@UpdatePoint("21.10.2023")
+@UpdatePoint("24.10.2023")
 public class WoWHeadMainPageActions extends BasePage implements PageActions
 {
     private WoWHeadMainPageLocators woWHeadMainPageLocators;
+    private TodayInWoWPageComponentActions todayInWoWPageComponentActions;
 
     public WoWHeadMainPageActions()
     {
         woWHeadMainPageLocators = new WoWHeadMainPageLocators();
+        todayInWoWPageComponentActions = new TodayInWoWPageComponentActions();
     }
 
     public List<WebElement> selectWebElementList(MainPageElements element)
@@ -35,49 +37,6 @@ public class WoWHeadMainPageActions extends BasePage implements PageActions
             case SPECIALIZATIONS -> list = woWHeadMainPageLocators.getClassesGuideIcons();
         }
         return list;
-    }
-
-    public WoWHeadMainPageActions clickToSwitcherAndSelectRealm(TodayInWoWSwitcher switcher)
-    {
-        WebElement realm = null;
-
-        switch (switcher) {
-            case NA_REALM -> realm = woWHeadMainPageLocators.getNASwitcher();
-            case EU_REALM -> realm = woWHeadMainPageLocators.getEUSwitcher();
-        }
-        realm.click();
-        return this;
-    }
-
-    public WebElement getToken(TodayInWoWSwitcher switcher)
-    {
-        WebElement token = null;
-
-        switch (switcher) {
-            case NA_REALM -> token = woWHeadMainPageLocators.getUSTokenPrice();
-            case EU_REALM -> token = woWHeadMainPageLocators.getEUTokenPrice();
-        }
-        return token;
-    }
-
-    public String getTokenPrice(TodayInWoWSwitcher switcher)
-    {
-        return this.getToken(switcher).getText();
-    }
-
-    public boolean isTokenPresent(TodayInWoWSwitcher switcher)
-    {
-        return this.getToken(switcher).isDisplayed();
-    }
-
-    public List<WebElement> getMythicAffixes(TodayInWoWSwitcher switcher)
-    {
-        List<WebElement> listOfAffixes = null;
-        switch (switcher) {
-            case NA_REALM -> listOfAffixes = woWHeadMainPageLocators.getNAAffixes();
-            case EU_REALM -> listOfAffixes = woWHeadMainPageLocators.getEUAffixes();
-        }
-        return listOfAffixes;
     }
 
     @Step
@@ -153,5 +112,23 @@ public class WoWHeadMainPageActions extends BasePage implements PageActions
     public int getMapPointCount()
     {
         return woWHeadMainPageLocators.getMapPoints().size();
+    }
+
+    @Step
+    public WebElement getTokenPrice(TodayInWoWSwitcher switcher)
+    {
+        WebElement element = todayInWoWPageComponentActions.getTokenPrice(switcher);
+        System.out.println("Token price in " + switcher.name() + " realm is: " + element.getText());
+        return element;
+    }
+
+    @Step
+    public boolean isListOfMythicAffixesEmpty(TodayInWoWSwitcher switcher)
+    {
+        List<WebElement> list = todayInWoWPageComponentActions.getSpecificListOfAffixes(switcher);
+        for(WebElement elem : list) {
+            System.out.println(elem.getText());
+        }
+        return !list.isEmpty();
     }
 }

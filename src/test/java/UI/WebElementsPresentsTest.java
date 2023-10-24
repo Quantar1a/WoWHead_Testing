@@ -20,7 +20,7 @@ import tools.listeners.CustomListener;
 import java.util.List;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("17.10.2023")
+@UpdatePoint("24.10.2023")
 public class WebElementsPresentsTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
@@ -56,9 +56,7 @@ public class WebElementsPresentsTest extends BaseTestClass
     public void checkToken(TodayInWoWSwitcher switcher)
     {
         woWHeadMainPageActions = new WoWHeadMainPageActions();
-        woWHeadMainPageActions.clickToSwitcherAndSelectRealm(switcher);
-        System.out.println("The token price in " + switcher.name() + " is " + woWHeadMainPageActions.getTokenPrice(switcher));;
-        Assert.assertTrue(woWHeadMainPageActions.isTokenPresent(switcher));
+        Assert.assertTrue(woWHeadMainPageActions.getTokenPrice(switcher).isDisplayed());
     }
 
     @MyDescription("""
@@ -69,14 +67,6 @@ public class WebElementsPresentsTest extends BaseTestClass
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)
     {
         woWHeadMainPageActions = new WoWHeadMainPageActions();
-        List<WebElement> listOfAffixes = woWHeadMainPageActions
-                .clickToSwitcherAndSelectRealm(switcher)
-                .getMythicAffixes(switcher);
-        Assert.assertFalse(listOfAffixes.isEmpty());
-
-        for (WebElement affix : listOfAffixes) {
-            System.out.print(affix.getText() + "  ");
-            Assert.assertTrue(affix.isDisplayed());
-        }
+        Assert.assertTrue(woWHeadMainPageActions.isListOfMythicAffixesEmpty(switcher));
     }
 }

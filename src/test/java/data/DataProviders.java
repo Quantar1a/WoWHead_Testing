@@ -31,8 +31,8 @@ public class DataProviders
     public Object[][] realms()
     {
         return new Object[][]{
-                {TodayInWoWSwitcher.NA_REALM},
-                {TodayInWoWSwitcher.EU_REALM}
+                {TodayInWoWSwitcher.EU_REALM},
+                {TodayInWoWSwitcher.NA_REALM}
         };
     }
 
