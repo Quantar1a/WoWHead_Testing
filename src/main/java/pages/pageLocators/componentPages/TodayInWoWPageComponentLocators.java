@@ -1,9 +1,10 @@
-package pages.pageLocators;
+package pages.pageLocators.componentPages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
+import pages.pageLocators.PageLocators;
 import tools.anotations.UpdatePoint;
 
 import java.util.List;

@@ -3,6 +3,8 @@ package pages.pageActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import pages.BasePage;
+import pages.pageActions.componentPages.HeaderPageActions;
+import pages.pageActions.componentPages.TodayInWoWPageComponentActions;
 import pages.pageLocators.WoWHeadMainPageLocators;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
@@ -16,12 +18,14 @@ import java.util.*;
 public class WoWHeadMainPageActions extends BasePage implements PageActions
 {
     private WoWHeadMainPageLocators woWHeadMainPageLocators;
-    private TodayInWoWPageComponentActions todayInWoWPageComponentActions;
+    public TodayInWoWPageComponentActions todayInWoWPageComponentActions;
+    public HeaderPageActions headerPageActions;
 
     public WoWHeadMainPageActions()
     {
         woWHeadMainPageLocators = new WoWHeadMainPageLocators();
         todayInWoWPageComponentActions = new TodayInWoWPageComponentActions();
+        headerPageActions = new HeaderPageActions();
     }
 
     public List<WebElement> selectWebElementList(MainPageElements element)

@@ -1,9 +1,10 @@
-package pages.pageActions;
+package pages.pageActions.componentPages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import pages.BasePage;
-import pages.pageLocators.TodayInWoWPageComponentLocators;
+import pages.pageActions.PageActions;
+import pages.pageLocators.componentPages.TodayInWoWPageComponentLocators;
 import tools.anotations.UpdatePoint;
 import tools.enums.TodayInWoWSwitcher;
 

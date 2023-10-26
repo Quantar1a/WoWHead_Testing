@@ -1,9 +1,11 @@
-package pages.pageActions;
+package pages.pageActions.componentPages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import pages.BasePage;
-import pages.pageLocators.HeaderPageLocators;
+import pages.pageActions.PageActions;
+import pages.pageActions.WoWHeadMainPageActions;
+import pages.pageLocators.componentPages.HeaderPageLocators;
 import tools.anotations.UpdatePoint;
 
 @UpdatePoint("21.10.2023")

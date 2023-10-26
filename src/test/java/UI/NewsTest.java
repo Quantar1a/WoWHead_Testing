@@ -21,7 +21,7 @@ public class NewsTest extends BaseTestClass
     @BeforeTest
     public void beforeTest()
     {
-        new Actions(webDriver)
+        woWHeadMainPageActions = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
     }
 
@@ -35,8 +35,8 @@ public class NewsTest extends BaseTestClass
     @Test(dataProvider = "indexes", dataProviderClass = DataProviders.class)
     public void compareRecentNewsNames(int index)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
-        WebElement element = woWHeadMainPageActions.getWebElementFromList(index, MainPageElements.RECENT_NEWS);
+        WebElement element = woWHeadMainPageActions
+                .getWebElementFromList(index, MainPageElements.RECENT_NEWS);
 
         String nameOnMainPage = woWHeadMainPageActions
                 .getWebElementText(element);
@@ -44,6 +44,7 @@ public class NewsTest extends BaseTestClass
         String nameInsideNews = woWHeadMainPageActions
                 .clickToWebRecentNewsElement(element)
                 .getTitleText();
+
         Assert.assertEquals(nameInsideNews, nameOnMainPage);
     }
 
@@ -51,7 +52,6 @@ public class NewsTest extends BaseTestClass
     @Test(dataProvider = "indexes", dataProviderClass = DataProviders.class)
     public void compareBlueTrackerNewsNames(int index)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
         WebElement element = woWHeadMainPageActions
                 .getWebElementFromList(index, MainPageElements.BLUE_TRACKER);
 

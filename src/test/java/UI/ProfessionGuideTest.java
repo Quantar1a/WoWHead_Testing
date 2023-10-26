@@ -8,7 +8,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.pageActions.HeaderPageActions;
+import pages.pageActions.componentPages.HeaderPageActions;
 import pages.pageActions.WoWHeadMainPageActions;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
@@ -24,19 +24,26 @@ public class ProfessionGuideTest extends BaseTestClass
     @BeforeTest
     public void beforeTest()
     {
-        new Actions(webDriver).open(new Data().getWOWHEAD_URL());
+        woWHeadMainPageActions = new Actions(webDriver)
+                .open(new Data().getWOWHEAD_URL());
     }
 
     @AfterMethod
     public void afterMethod()
     {
-        new HeaderPageActions().clickToLogo();
+        woWHeadMainPageActions
+                .headerPageActions
+                .clickToLogo();
     }
+
     @Test(dataProvider = "professions", dataProviderClass = DataProviders.class)
     public void professionTest(Professions profession)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
-        String title = woWHeadMainPageActions.clickToSpecificProfession(profession).getTitleText().toLowerCase();
+        String title = woWHeadMainPageActions
+                .clickToSpecificProfession(profession)
+                .getTitleText()
+                .toLowerCase();
+
         Assert.assertTrue(title.contains(profession.name().toLowerCase()));
     }
 }

@@ -27,7 +27,7 @@ public class WebElementsPresentsTest extends BaseTestClass
     @BeforeTest
     public void beforeTest()
     {
-        new Actions(webDriver)
+        woWHeadMainPageActions = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
     }
 
@@ -38,7 +38,6 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "pageElements", dataProviderClass = DataProviders.class)
     public void checkWebElementsList(MainPageElements element)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
         List<WebElement> list = woWHeadMainPageActions.selectWebElementList(element);
         Assert.assertFalse(list.isEmpty());
         System.out.println("The number of " + element.name() + " are " + list.size());
@@ -55,7 +54,6 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkToken(TodayInWoWSwitcher switcher)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
         Assert.assertTrue(woWHeadMainPageActions.getTokenPrice(switcher).isDisplayed());
     }
 
@@ -66,7 +64,6 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
         Assert.assertTrue(woWHeadMainPageActions.isListOfMythicAffixesEmpty(switcher));
     }
 }
