@@ -8,7 +8,7 @@ import pages.pageActions.WoWHeadMainPageActions;
 import pages.pageLocators.componentPages.HeaderPageLocators;
 import tools.anotations.UpdatePoint;
 
-@UpdatePoint("21.10.2023")
+@UpdatePoint("28.10.2023")
 public class HeaderPageActions extends BasePage implements PageActions
 {
     private HeaderPageLocators headerPageLocators;
@@ -29,9 +29,8 @@ public class HeaderPageActions extends BasePage implements PageActions
     }
 
     @Step
-    public WoWHeadMainPageActions sendKeysToInput(String request)
+    public void sendKeysToInput(String request)
     {
         headerPageLocators.getInput().sendKeys(request, Keys.ENTER);
-        return new WoWHeadMainPageActions();
     }
 }

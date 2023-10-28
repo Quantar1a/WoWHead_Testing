@@ -11,7 +11,7 @@ import tools.enums.TodayInWoWSwitcher;
 import java.util.ArrayList;
 import java.util.List;
 
-@UpdatePoint("16.10.2023")
+@UpdatePoint("28.10.2023")
 public class DataProviders
 {
     @DataProvider(name = "pageElements")
@@ -72,5 +72,16 @@ public class DataProviders
         }
 
         return obj;
+    }
+
+    @DataProvider(name = "spells")
+    public Object[][] spells()
+    {
+        return new Object[][]
+        {
+                {"Execute"},
+                {"Heroic Throw"},
+                {"Shield Slam"},
+        };
     }
 }

@@ -2,19 +2,18 @@ package UI;
 
 import baseTest.BaseTestClass;
 import data.Data;
-import org.openqa.selenium.support.PageFactory;
+import data.DataProviders;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import pages.pageActions.componentPages.HeaderPageActions;
+import org.testng.annotations.*;
+import pages.pageActions.SearchPageActions;
 import pages.pageActions.WoWHeadMainPageActions;
+import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.listeners.CustomListener;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("21.10.2023")
+@UpdatePoint("28.10.2023")
 public class SearchTest extends BaseTestClass
 {
     WoWHeadMainPageActions woWHeadMainPageActions;
@@ -30,6 +29,14 @@ public class SearchTest extends BaseTestClass
 
     }
 
+    @AfterMethod
+    public void afterTest()
+    {
+        woWHeadMainPageActions
+                .headerPageActions
+                .clickToLogo();
+    }
+
     @Test
     public void checkAchievementCondition()
     {
@@ -39,5 +46,19 @@ public class SearchTest extends BaseTestClass
 
         Assert.assertTrue(woWHeadMainPageActions.isMapPresent());
         Assert.assertEquals(woWHeadMainPageActions.getMapPointCount(), 114);
+    }
+
+    @MyDescription("Search spell inside WoWHead database")
+    @Test(dataProvider = "spells", dataProviderClass = DataProviders.class)
+    public void searchSpells(String spellName)
+    {
+        woWHeadMainPageActions
+                .headerPageActions
+                .sendKeysToInput(spellName);
+
+        Assert.assertTrue(new SearchPageActions()
+                .selectTopResult()
+                .returnToolTip()
+                .isDisplayed());
     }
 }
