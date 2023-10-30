@@ -7,21 +7,22 @@ import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.pageActions.WoWHeadMainPageActions;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
 import tools.listeners.CustomListener;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("16.10.2023")
+@UpdatePoint("30.10.2023")
 public class NewsTest extends BaseTestClass
 {
-    WoWHeadMainPageActions woWHeadMainPageActions;
+    WoWHeadMainPage woWHeadMainPage;
+
     @BeforeTest
     public void beforeTest()
     {
-        woWHeadMainPageActions = new Actions(webDriver)
+        woWHeadMainPage = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
     }
 
@@ -35,13 +36,13 @@ public class NewsTest extends BaseTestClass
     @Test(dataProvider = "indexes", dataProviderClass = DataProviders.class)
     public void compareRecentNewsNames(int index)
     {
-        WebElement element = woWHeadMainPageActions
+        WebElement element = woWHeadMainPage
                 .getWebElementFromList(index, MainPageElements.RECENT_NEWS);
 
-        String nameOnMainPage = woWHeadMainPageActions
+        String nameOnMainPage = woWHeadMainPage
                 .getWebElementText(element);
 
-        String nameInsideNews = woWHeadMainPageActions
+        String nameInsideNews = woWHeadMainPage
                 .clickToWebRecentNewsElement(element)
                 .getTitleText();
 
@@ -52,13 +53,13 @@ public class NewsTest extends BaseTestClass
     @Test(dataProvider = "indexes", dataProviderClass = DataProviders.class)
     public void compareBlueTrackerNewsNames(int index)
     {
-        WebElement element = woWHeadMainPageActions
+        WebElement element = woWHeadMainPage
                 .getWebElementFromList(index, MainPageElements.BLUE_TRACKER);
 
-        String nameOnMainPage = woWHeadMainPageActions
+        String nameOnMainPage = woWHeadMainPage
                 .getWebElementText(element);
 
-        String nameInsideNews = woWHeadMainPageActions
+        String nameInsideNews = woWHeadMainPage
                 .clickToBlueTrackerNewsElement(element)
                 .getWebElementText();
 

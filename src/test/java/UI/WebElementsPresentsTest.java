@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.pageActions.WoWHeadMainPageActions;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
@@ -20,14 +20,15 @@ import tools.listeners.CustomListener;
 import java.util.List;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("24.10.2023")
+@UpdatePoint("30.10.2023")
 public class WebElementsPresentsTest extends BaseTestClass
 {
-    WoWHeadMainPageActions woWHeadMainPageActions;
+    WoWHeadMainPage woWHeadMainPage;
+
     @BeforeTest
     public void beforeTest()
     {
-        woWHeadMainPageActions = new Actions(webDriver)
+        woWHeadMainPage = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
     }
 
@@ -38,7 +39,7 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "pageElements", dataProviderClass = DataProviders.class)
     public void checkWebElementsList(MainPageElements element)
     {
-        List<WebElement> list = woWHeadMainPageActions.selectWebElementList(element);
+        List<WebElement> list = woWHeadMainPage.selectWebElementList(element);
         Assert.assertFalse(list.isEmpty());
         System.out.println("The number of " + element.name() + " are " + list.size());
 
@@ -54,7 +55,7 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkToken(TodayInWoWSwitcher switcher)
     {
-        Assert.assertTrue(woWHeadMainPageActions.getTokenPrice(switcher).isDisplayed());
+        Assert.assertTrue(woWHeadMainPage.getTokenPrice(switcher).isDisplayed());
     }
 
     @MyDescription("""
@@ -64,6 +65,6 @@ public class WebElementsPresentsTest extends BaseTestClass
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)
     {
-        Assert.assertTrue(woWHeadMainPageActions.isListOfMythicAffixesEmpty(switcher));
+        Assert.assertTrue(woWHeadMainPage.isListOfMythicAffixesEmpty(switcher));
     }
 }

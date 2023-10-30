@@ -5,26 +5,26 @@ import data.Data;
 import data.DataProviders;
 import org.testng.Assert;
 import org.testng.annotations.*;
-import pages.pageActions.SearchPageActions;
-import pages.pageActions.WoWHeadMainPageActions;
+import pages.pageObjects.SearchPage;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.listeners.CustomListener;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("28.10.2023")
+@UpdatePoint("30.10.2023")
 public class SearchTest extends BaseTestClass
 {
-    WoWHeadMainPageActions woWHeadMainPageActions;
+    WoWHeadMainPage woWHeadMainPage;
 
     @BeforeTest
     public void beforeTest()
     {
-        woWHeadMainPageActions = new Actions(webDriver)
+        woWHeadMainPage = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
-        woWHeadMainPageActions
-                .headerPageActions
+        woWHeadMainPage
+                .headerPageComponent
                 .declineNotifications();
 
     }
@@ -32,31 +32,31 @@ public class SearchTest extends BaseTestClass
     @AfterMethod
     public void afterTest()
     {
-        woWHeadMainPageActions
-                .headerPageActions
+        woWHeadMainPage
+                .headerPageComponent
                 .clickToLogo();
     }
 
     @Test
     public void checkAchievementCondition()
     {
-        woWHeadMainPageActions
-                .headerPageActions
+        woWHeadMainPage
+                .headerPageComponent
                 .sendKeysToInput("mankriks wife");
 
-        Assert.assertTrue(woWHeadMainPageActions.isMapPresent());
-        Assert.assertEquals(woWHeadMainPageActions.getMapPointCount(), 114);
+        Assert.assertTrue(woWHeadMainPage.isMapPresent());
+        Assert.assertEquals(woWHeadMainPage.getMapPointCount(), 114);
     }
 
     @MyDescription("Search spell inside WoWHead database")
     @Test(dataProvider = "spells", dataProviderClass = DataProviders.class)
     public void searchSpells(String spellName)
     {
-        woWHeadMainPageActions
-                .headerPageActions
+        woWHeadMainPage
+                .headerPageComponent
                 .sendKeysToInput(spellName);
 
-        Assert.assertTrue(new SearchPageActions()
+        Assert.assertTrue(new SearchPage()
                 .selectTopResult()
                 .returnToolTip()
                 .isDisplayed());

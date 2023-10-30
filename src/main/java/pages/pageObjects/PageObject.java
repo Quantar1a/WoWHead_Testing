@@ -1,8 +1,8 @@
-package pages.pageLocators;
+package pages.pageObjects;
 
 import tools.anotations.InterfaceMarker;
 
 @InterfaceMarker
-public interface PageLocators
+public interface PageObject
 {
 }

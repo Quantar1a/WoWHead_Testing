@@ -1,13 +1,12 @@
 package tools.classes;
 
 import org.openqa.selenium.WebDriver;
-import pages.pageActions.WoWHeadMainPageActions;
-import pages.pageActions.componentPages.HeaderPageActions;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 
 @MyDescription("Different actions with WebDriver")
-@UpdatePoint("25.09.2023")
+@UpdatePoint("30.09.2023")
 public class Actions implements OpenURL
 {
     WebDriver driver;
@@ -18,9 +17,9 @@ public class Actions implements OpenURL
     }
 
     @MyDescription("Open URL in browser")
-    public WoWHeadMainPageActions open(String URL)
+    public WoWHeadMainPage open(String URL)
     {
         driver.get(URL);
-        return new WoWHeadMainPageActions();
+        return new WoWHeadMainPage();
     }
 }
