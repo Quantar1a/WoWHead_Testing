@@ -14,7 +14,7 @@ import java.util.List;
 @UpdatePoint("30.10.2023")
 public class TodayInWoWPageComponent extends BasePage implements PageObject
 {
-    private Locators locators;
+    private final Locators locators;
 
     public TodayInWoWPageComponent()
     {
