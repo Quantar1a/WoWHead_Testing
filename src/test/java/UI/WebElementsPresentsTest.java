@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.pageComponents.SpecGuideNavigationComponent;
 import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
