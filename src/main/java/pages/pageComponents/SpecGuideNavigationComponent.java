@@ -1,23 +1,47 @@
 package pages.pageComponents;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
+import pages.pageObjects.ClassGuidePage;
 import pages.pageObjects.PageObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class SpecGuideNavigationComponent extends BasePage implements PageObject
 {
     private Locators locators;
 
+    private HashMap<GuideNavigation, WebElement> guideNavigationWebElementHashMap;
+
     public SpecGuideNavigationComponent()
     {
         locators = new Locators();
+        guideNavigationWebElementHashMap = this.setGuideNavigationWebElementHashMap();
     }
 
+    private HashMap<GuideNavigation, WebElement> setGuideNavigationWebElementHashMap()
+    {
+        List <WebElement> webElementsArrayList = locators.guideNavigation;
+        ArrayList <GuideNavigation> guideNavigationElementsArrayList = new ArrayList<>(List.of(GuideNavigation.values()));
+        HashMap <GuideNavigation, WebElement> map = new HashMap<>();
 
+        for (int i = 0; i < webElementsArrayList.size(); i++) {
+            map.put(guideNavigationElementsArrayList.get(i), webElementsArrayList.get(i));
+        }
+        return map;
+    }
+
+    @Step
+    public ClassGuidePage clickToGuideNavigationElement(GuideNavigation guideNavigation)
+    {
+        guideNavigationWebElementHashMap.get(guideNavigation).click();
+        return new ClassGuidePage();
+    }
 
     private class Locators
     {
@@ -26,17 +50,11 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
             PageFactory.initElements(driver, this);
         }
 
-        @FindBy(xpath = "//div[@id=\"guide-navigation\"]/ul[1]//a[contains(@href, 'wowhead')]")
-        List<WebElement> DFSeasonTwo;
-
-        @FindBy(xpath = "//div[@id=\"guide-navigation\"]/ul[2]//a[contains(@href, 'wowhead')]")
-        List<WebElement> specBasics;
-
-        @FindBy(xpath = "//div[@id=\"guide-navigation\"]/ul[3]//a[contains(@href, 'wowhead')]")
-        List<WebElement> pvp;
+        @FindBy(xpath = "//div[@id=\"guide-navigation\"]//a[contains(@href, 'wowhead')]")
+        List<WebElement> guideNavigation;
     }
 
-    public enum DFSeason2Enum
+    public enum GuideNavigation
     {
         CHEAT_SHEET,
         SEASON_2_GUIDE,
@@ -47,23 +65,17 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
         TEAR_SET,
         MYTHIC_PLUS,
         ABERRUS_RAID_TIPS,
-        PRIMORDIAL_STONE
-    }
-
-    public enum SpecBasicsEnum
-    {
-        OVERVIEW,
+        PRIMORDIAL_STONE,
+        PVE_OVERVIEW,
         ABILITIES,
         CONSUMABLES,
         WEAK_AURAS,
-        MACROS_AND_aDDONS,
+        MACROS_AND_ADDONS,
+        GLOSSARY,
+        COMMON_QUESTIONS,
         LEVELING,
-        MAGE_TOWER
-    }
-
-    public enum PVPEnum
-    {
-        OVERVIEW,
-        TALENT_BUILD
+        MAGE_TOWER,
+        PVP_OVERVIEW,
+        PVP_TALENT_BUILD
     }
 }

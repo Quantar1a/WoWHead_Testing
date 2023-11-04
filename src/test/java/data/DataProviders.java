@@ -1,7 +1,7 @@
 package data;
 
 import org.testng.annotations.DataProvider;
-import pages.pageLocators.WoWHeadMainPageLocators;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
 import tools.enums.Professions;
@@ -36,17 +36,18 @@ public class DataProviders
         };
     }
 
-    @DataProvider(name = "indexes")
-    public Object[][] indexes()
-    {
-        Object[][] objects = new Object[new WoWHeadMainPageLocators().getRecentNewsList().size()][1];
-
-        for (int i = 0; i < objects.length; i++) {
-            objects[i][0] = i;
-        }
-
-        return objects;
-    }
+//    @DataProvider(name = "indexes")
+//    public Object[][] indexes()
+//    {
+//        Object[][] objects = new Object[new WoWHeadMainPageLocators().getRecentNewsList().size()][1];
+//        Object[][] objects = new Object[new WoWHeadMainPage().;
+//
+//        for (int i = 0; i < objects.length; i++) {
+//            objects[i][0] = i;
+//        }
+//
+//        return objects;
+//    }
 
     @DataProvider(name = "professions")
     public Object[][] professions()

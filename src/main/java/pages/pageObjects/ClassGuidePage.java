@@ -11,7 +11,7 @@ import tools.anotations.UpdatePoint;
 public class ClassGuidePage extends BasePage implements PageObject
 {
     private final Locators locators;
-    private final SpecGuideNavigationComponent specGuideNavigationComponent;
+    public final SpecGuideNavigationComponent specGuideNavigationComponent;
 
     public ClassGuidePage()
     {
@@ -24,6 +24,10 @@ public class ClassGuidePage extends BasePage implements PageObject
         return locators.title.getText();
     }
 
+    public boolean isGuideBodyDisplayed()
+    {
+        return locators.guideBody.isDisplayed();
+    }
 
 
     private class Locators
@@ -35,6 +39,9 @@ public class ClassGuidePage extends BasePage implements PageObject
 
         @FindBy(xpath = "//h1[@class='heading-size-1 guide-content-title-favorite']")
         WebElement title;
+
+        @FindBy(xpath = "//div[@id='guide-body']")
+        WebElement guideBody;
 
     }
 }

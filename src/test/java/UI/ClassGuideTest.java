@@ -8,11 +8,16 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.pageComponents.SpecGuideNavigationComponent;
+import pages.pageObjects.ClassGuidePage;
 import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.Specializations;
 import tools.listeners.CustomListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Listeners(CustomListener.class)
 @UpdatePoint("30.10.2023")
@@ -36,7 +41,7 @@ public class ClassGuideTest extends BaseTestClass
     }
 
     @Test(dataProvider = "specializations", dataProviderClass = DataProviders.class)
-    public void specializationTest(Specializations specialization)
+    public void specializationTitleNameTest(Specializations specialization)
     {
         String title = woWHeadMainPage
                 .clickToSpecificSpecialization(specialization)
@@ -48,5 +53,17 @@ public class ClassGuideTest extends BaseTestClass
                 .replace("_", " ");
 
         Assert.assertTrue(title.contains(specializationName));
+    }
+
+    @Test(dataProvider = "specializations", dataProviderClass = DataProviders.class)
+    public void specializationGuideTest(Specializations specialization)
+    {
+        woWHeadMainPage.clickToSpecificSpecialization(specialization);
+        ArrayList<SpecGuideNavigationComponent.GuideNavigation> guideNavigationArrayList = new ArrayList<>(List.of(SpecGuideNavigationComponent.GuideNavigation.values()));
+
+        for (SpecGuideNavigationComponent.GuideNavigation guideNavigationElement : guideNavigationArrayList) {
+            Assert.assertTrue(new ClassGuidePage().specGuideNavigationComponent.clickToGuideNavigationElement(guideNavigationElement).isGuideBodyDisplayed());
+        }
+
     }
 }
