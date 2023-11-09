@@ -1,7 +1,6 @@
 package data;
 
 import org.testng.annotations.DataProvider;
-import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
 import tools.enums.Professions;
@@ -11,6 +10,7 @@ import tools.enums.TodayInWoWSwitcher;
 import java.util.ArrayList;
 import java.util.List;
 
+//Test data
 @UpdatePoint("28.10.2023")
 public class DataProviders
 {

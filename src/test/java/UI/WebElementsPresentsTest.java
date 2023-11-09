@@ -9,9 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.pageComponents.SpecGuideNavigationComponent;
 import pages.pageObjects.WoWHeadMainPage;
-import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
@@ -33,9 +31,7 @@ public class WebElementsPresentsTest extends BaseTestClass
                 .open(new Data().getWOWHEAD_URL());
     }
 
-    @MyDescription("""
-            According to Testchechs #1-6
-            """)
+    //According to Testchechs #1-6
     @Description("Check visible of elements on page")
     @Test(dataProvider = "pageElements", dataProviderClass = DataProviders.class)
     public void checkWebElementsList(MainPageElements element)
@@ -49,9 +45,7 @@ public class WebElementsPresentsTest extends BaseTestClass
         }
     }
 
-    @MyDescription("""
-            According to Testchecks #7
-            """)
+    //According to Testchecks #7
     @Description("Check token price")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkToken(TodayInWoWSwitcher switcher)
@@ -59,9 +53,7 @@ public class WebElementsPresentsTest extends BaseTestClass
         Assert.assertTrue(woWHeadMainPage.getTokenPrice(switcher).isDisplayed());
     }
 
-    @MyDescription("""
-            According to Testchecks #8
-            """)
+    //According to Testchecks #8
     @Description("Check if mythic affixes is displayed")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)

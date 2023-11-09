@@ -5,12 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import pages.BasePage;
 import tools.classes.Setting;
-import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.exceptions.NotAppropriateWindowSizeException;
 
+//Base class for all tests
 @UpdatePoint("23.09.2023")
-@MyDescription("Base class for all tests")
 public abstract class BaseTestClass
 {
     protected static WebDriver webDriver;

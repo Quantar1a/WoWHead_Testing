@@ -3,6 +3,7 @@ package tools.enums;
 import data.Configuration;
 import org.openqa.selenium.Dimension;
 
+//
 public enum WindowMode
 {
     MAXIMIZE,

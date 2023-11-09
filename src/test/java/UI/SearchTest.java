@@ -7,7 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pages.pageObjects.SearchPage;
 import pages.pageObjects.WoWHeadMainPage;
-import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.listeners.CustomListener;
@@ -48,7 +47,7 @@ public class SearchTest extends BaseTestClass
         Assert.assertEquals(woWHeadMainPage.getMapPointCount(), 114);
     }
 
-    @MyDescription("Search spell inside WoWHead database")
+    //Search spell inside WoWHead database
     @Test(dataProvider = "spells", dataProviderClass = DataProviders.class)
     public void searchSpells(String spellName)
     {

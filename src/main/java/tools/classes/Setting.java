@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import tools.anotations.MyDescription;
 import tools.anotations.UpdatePoint;
 import tools.enums.Browsers;
 import tools.enums.WindowMode;
@@ -15,12 +14,11 @@ import tools.exceptions.NotAppropriateWindowSizeException;
 import java.time.Duration;
 
 @UpdatePoint("23.09.2023")
-@MyDescription("Setting for load browsers")
 public class Setting
 {
     static WebDriver driver;
 
-    @MyDescription("Possibility to clear cookie")
+    //Possibility to clear cookie
     public static void deleteCookie(Boolean isDeleteCookie)
     {
         if (isDeleteCookie) {
@@ -28,7 +26,7 @@ public class Setting
         }
     }
 
-    @MyDescription("Select specific browser")
+    //Select specific browser
     public static void selectBrowser(Browsers browser)
     {
         switch (browser) {
@@ -47,16 +45,14 @@ public class Setting
         }
     }
 
-    @MyDescription("Set page load and implicitly wait timeouts")
+    //Set page load and implicitly wait timeouts
     public static void setTimeOuts(Duration pageLoadTimeOut, Duration implicitlyWaitTimeOut)
     {
         driver.manage().timeouts().pageLoadTimeout(pageLoadTimeOut);
         driver.manage().timeouts().implicitlyWait(implicitlyWaitTimeOut);
     }
 
-    @MyDescription("""
-            Set window size
-            """)
+    //Set window size
     public static void setWindowSize(WindowMode mode) throws NotAppropriateWindowSizeException
     {
         switch (mode) {
@@ -77,7 +73,7 @@ public class Setting
         }
     }
 
-    @MyDescription("Return instance webdriver")
+    //Return instance webdriver
     public static WebDriver getWebDriver()
     {
         return driver;
