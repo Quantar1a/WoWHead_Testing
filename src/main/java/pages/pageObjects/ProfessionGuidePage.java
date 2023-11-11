@@ -19,13 +19,14 @@ public class ProfessionGuidePage extends BasePage implements PageObject
         professionGuideNavigationComponent = new ProfessionGuideNavigationComponent();
     }
 
+    //Return title name
     public String getTitleText()
     {
         return locators.title.getText();
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

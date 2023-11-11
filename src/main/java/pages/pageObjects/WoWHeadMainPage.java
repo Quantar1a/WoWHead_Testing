@@ -29,11 +29,13 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         todayInWoWPageComponent = new TodayInWoWPageComponent();
     }
 
-    public List<WebElement> selectWebElementList(MainPageElements element)
+    //Build List<WebElement> depending on mainPageElement
+    //And return List<WebElement>
+    public List<WebElement> selectWebElementList(MainPageElements mainPageElement)
     {
         List<WebElement> list = null;
 
-        switch (element) {
+        switch (mainPageElement) {
             case PROFESSIONS -> list = locators.professionsGuideIcons;
             case RECENT_NEWS -> list = locators.recentNewsList;
             case BLUE_TRACKER -> list = locators.blueTrackerNewsList;
@@ -44,32 +46,38 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return list;
     }
 
+    //Obtain and return text from WebElement
     @Step
     public String getWebElementText(WebElement element)
     {
         return element.getText();
     }
 
+    //Click on recent news - news, and return new object RecentNewsPage
     @Step
-    public RecentNewsPage clickToWebRecentNewsElement(WebElement element)
+    public RecentNewsPage clickToWebRecentNewsElement(WebElement news)
     {
-        element.click();
+        news.click();
         return new RecentNewsPage();
     }
 
+    //Click on blue tracker - news, and return new object BlueTrackerPage
     @Step
-    public BlueTrackerPage clickToBlueTrackerNewsElement(WebElement element)
+    public BlueTrackerPage clickToBlueTrackerNewsElement(WebElement news)
     {
-        element.click();
+        news.click();
         return new BlueTrackerPage();
     }
 
+    //Get specific WebElement from list depending on index in list and enum(element)
     @Step
     public WebElement getWebElementFromList(int index, MainPageElements element)
     {
         return this.selectWebElementList(element).get(index);
     }
 
+    //Set Map<Professions, WebElement>
+    //And return this map
     private Map<Professions, WebElement> getProfessionMap ()
     {
         List<WebElement> list = locators.professionsGuideIcons;
@@ -83,6 +91,8 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return map;
     }
 
+    //Obtain specific element from getProfessionMap, click on it
+    //And return new Object ProfessionGuidePage
     @Step
     public ProfessionGuidePage clickToSpecificProfession(Professions profession)
     {
@@ -90,6 +100,8 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return new ProfessionGuidePage();
     }
 
+    //Set Map<Specializations, WebElement>
+    //And return this map
     private Map<Specializations, WebElement> getSpecializationMap ()
     {
         List<WebElement> list = locators.classesGuideIcons;
@@ -102,6 +114,8 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return map;
     }
 
+    //Obtain specific element from getSpecializationMap, click on it
+    //And return new Object SpecializationGuidePage
     @Step
     public ClassGuidePage clickToSpecificSpecialization(Specializations specialization)
     {
@@ -109,16 +123,19 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return new ClassGuidePage();
     }
 
+    //Return true if map(WebElement) is displayed on page
     public boolean isMapPresent()
     {
         return locators.map.isDisplayed();
     }
 
+    //Obtain number of points on map(WebElement)
     public int getMapPointCount()
     {
         return locators.mapPoints.size();
     }
 
+    //Obtain token price, print is in console and its WebElement
     @Step
     public WebElement getTokenPrice(TodayInWoWSwitcher switcher)
     {
@@ -127,6 +144,8 @@ public class WoWHeadMainPage extends BasePage implements PageObject
         return element;
     }
 
+    //Check is list of mythic affixes is empty
+    //If yes - return false
     @Step
     public boolean isListOfMythicAffixesEmpty(TodayInWoWSwitcher switcher)
     {
@@ -138,7 +157,7 @@ public class WoWHeadMainPage extends BasePage implements PageObject
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

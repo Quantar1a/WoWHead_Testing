@@ -21,6 +21,8 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
         locators = new Locators();
     }
 
+    //Obtain and return wow token price depending on realm name
+    //Switcher is a realm name
     @Step
     public WebElement getTokenPrice(TodayInWoWSwitcher switcher)
     {
@@ -28,6 +30,8 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
         return this.getSpecificToken(switcher);
     }
 
+    //Obtain and return mythic affixes depending on realm name
+    //Switcher is a realm name
     @Step
     public List<WebElement> getMythicAffixes(TodayInWoWSwitcher switcher)
     {
@@ -35,6 +39,8 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
         return this.getSpecificListOfAffixes(switcher);
     }
 
+    //Select specific switcher (realm) depending on realm name
+    //Switcher is a realm name
     public WebElement getSpecificSwitcher(TodayInWoWSwitcher switcher)
     {
         WebElement switchButton = null;
@@ -45,6 +51,8 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
         return switchButton;
     }
 
+    //Obtain specific token depending on realm name
+    //Switcher is a realm name
     public WebElement getSpecificToken(TodayInWoWSwitcher switcher)
     {
         WebElement token = null;
@@ -55,6 +63,8 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
         return token;
     }
 
+    //Obtain list of mythic affixes depending on realm name
+    //Switcher is a realm name
     public List<WebElement> getSpecificListOfAffixes(TodayInWoWSwitcher switcher)
     {
         List<WebElement> list = null;
@@ -66,7 +76,7 @@ public class TodayInWoWPageComponent extends BasePage implements PageObject
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

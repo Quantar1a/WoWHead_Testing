@@ -35,6 +35,7 @@ public class ProfessionGuideTest extends BaseTestClass
                 .clickToLogo();
     }
 
+    //Verify if ProfessionGuide title name contains specific profession name
     @Test(dataProvider = "professions", dataProviderClass = DataProviders.class)
     public void professionTest(Professions profession)
     {

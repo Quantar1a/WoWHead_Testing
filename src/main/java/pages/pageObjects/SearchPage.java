@@ -20,6 +20,8 @@ public class SearchPage extends BasePage implements PageObject
         locators = new Locators();
     }
 
+    //Obtain list of top results like List<WebElement>
+    //And click on first WebElement in list
     @Step
     public SpellAbilitiesPage selectTopResult()
     {
@@ -30,7 +32,7 @@ public class SearchPage extends BasePage implements PageObject
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

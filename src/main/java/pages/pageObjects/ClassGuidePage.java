@@ -19,17 +19,20 @@ public class ClassGuidePage extends BasePage implements PageObject
         locators = new Locators();
     }
 
+    //Return title name
     public String getTitleText()
     {
         return locators.title.getText();
     }
 
+    //Specified whether guide body is displayed on page
+    //If yes - return true
     public boolean isGuideBodyDisplayed()
     {
         return locators.guideBody.isDisplayed();
     }
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

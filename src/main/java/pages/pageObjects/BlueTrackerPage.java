@@ -16,13 +16,14 @@ public class BlueTrackerPage extends BasePage implements PageObject
         locators = new Locators();
     }
 
+    //Return title name
     public String getWebElementText()
     {
         return locators.newsTitle.getText();
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

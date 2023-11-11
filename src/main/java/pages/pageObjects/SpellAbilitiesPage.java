@@ -16,13 +16,14 @@ public class SpellAbilitiesPage extends BasePage implements PageObject
         locators = new Locators();
     }
 
+    //Return wow head tooltip
     public WebElement returnToolTip()
     {
         return locators.wowHeadToolTip;
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

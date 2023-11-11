@@ -36,6 +36,7 @@ public class SearchTest extends BaseTestClass
                 .clickToLogo();
     }
 
+    //Verify site hidden achievement condition
     @Test
     public void checkAchievementCondition()
     {

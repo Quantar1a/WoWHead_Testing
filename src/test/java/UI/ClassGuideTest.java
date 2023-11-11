@@ -40,6 +40,7 @@ public class ClassGuideTest extends BaseTestClass
                 .clickToLogo();
     }
 
+    //Verify whether specializationGuidePage title name contains the name of the specialization
     @Test(dataProvider = "specializations", dataProviderClass = DataProviders.class)
     public void specializationTitleNameTest(Specializations specialization)
     {
@@ -55,6 +56,7 @@ public class ClassGuideTest extends BaseTestClass
         Assert.assertTrue(title.contains(specializationName));
     }
 
+    //Verify whether page body contains any WebElement on all chapters inside guide
     @Test(dataProvider = "specializations", dataProviderClass = DataProviders.class)
     public void specializationGuideTest(Specializations specialization)
     {

@@ -36,7 +36,7 @@ public class HeaderPageComponent extends BasePage implements PageObject
     }
 
 
-
+    //Class-container for locators
     private class Locators
     {
         Locators()

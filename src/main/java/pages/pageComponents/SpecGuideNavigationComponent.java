@@ -24,6 +24,8 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
         guideNavigationWebElementHashMap = this.setGuideNavigationWebElementHashMap();
     }
 
+    //Set guideNavigationWebElementHashMap with parameters <GuideNavigations, WebElement>
+    //And return this map
     private HashMap<GuideNavigation, WebElement> setGuideNavigationWebElementHashMap()
     {
         List <WebElement> webElementsArrayList = locators.guideNavigation;
@@ -36,6 +38,7 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
         return map;
     }
 
+    //Find WebElement in guideNavigationWebElementHashMap, and click on it
     @Step
     public ClassGuidePage clickToGuideNavigationElement(GuideNavigation guideNavigation)
     {
@@ -43,6 +46,7 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
         return new ClassGuidePage();
     }
 
+    //Class-container for locators
     private class Locators
     {
         Locators()
@@ -54,6 +58,7 @@ public class SpecGuideNavigationComponent extends BasePage implements PageObject
         List<WebElement> guideNavigation;
     }
 
+    //Enumerations for WebElements in guide navigation panel (on ClassGuidePage)
     public enum GuideNavigation
     {
         CHEAT_SHEET,
