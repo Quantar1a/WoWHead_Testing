@@ -2,37 +2,63 @@ package UI;
 
 import baseTest.BaseTestClass;
 import data.Data;
+import data.DataProviders;
 import org.testng.Assert;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import pages.pageActions.HeaderPageActions;
-import pages.pageActions.WoWHeadMainPageActions;
+import org.testng.annotations.*;
+import pages.pageObjects.SearchPage;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.listeners.CustomListener;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("21.10.2023")
+@UpdatePoint("30.10.2023")
 public class SearchTest extends BaseTestClass
 {
-    WoWHeadMainPageActions woWHeadMainPageActions;
+    WoWHeadMainPage woWHeadMainPage;
 
     @BeforeTest
     public void beforeTest()
     {
-        new Actions(webDriver)
-                .open(new Data().getWOWHEAD_URL())
+        woWHeadMainPage = new Actions(webDriver)
+                .open(new Data().getWOWHEAD_URL());
+        woWHeadMainPage
+                .headerPageComponent
                 .declineNotifications();
+
     }
 
+    @AfterMethod
+    public void afterTest()
+    {
+        woWHeadMainPage
+                .headerPageComponent
+                .clickToLogo();
+    }
+
+    //Verify site hidden achievement condition
     @Test
     public void checkAchievementCondition()
     {
-        woWHeadMainPageActions = new HeaderPageActions()
+        woWHeadMainPage
+                .headerPageComponent
                 .sendKeysToInput("mankriks wife");
 
-        Assert.assertTrue(woWHeadMainPageActions.isMapPresent());
-        Assert.assertEquals(woWHeadMainPageActions.getMapPointCount(), 114);
+        Assert.assertTrue(woWHeadMainPage.isMapPresent());
+        Assert.assertEquals(woWHeadMainPage.getMapPointCount(), 114);
+    }
+
+    //Search spell inside WoWHead database
+    @Test(dataProvider = "spells", dataProviderClass = DataProviders.class)
+    public void searchSpells(String spellName)
+    {
+        woWHeadMainPage
+                .headerPageComponent
+                .sendKeysToInput(spellName);
+
+        Assert.assertTrue(new SearchPage()
+                .selectTopResult()
+                .returnToolTip()
+                .isDisplayed());
     }
 }

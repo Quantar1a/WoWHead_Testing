@@ -9,8 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import pages.pageActions.WoWHeadMainPageActions;
-import tools.anotations.MyDescription;
+import pages.pageObjects.WoWHeadMainPage;
 import tools.anotations.UpdatePoint;
 import tools.classes.Actions;
 import tools.enums.MainPageElements;
@@ -20,26 +19,24 @@ import tools.listeners.CustomListener;
 import java.util.List;
 
 @Listeners(CustomListener.class)
-@UpdatePoint("17.10.2023")
+@UpdatePoint("30.10.2023")
 public class WebElementsPresentsTest extends BaseTestClass
 {
-    WoWHeadMainPageActions woWHeadMainPageActions;
+    WoWHeadMainPage woWHeadMainPage;
+
     @BeforeTest
     public void beforeTest()
     {
-        new Actions(webDriver)
+        woWHeadMainPage = new Actions(webDriver)
                 .open(new Data().getWOWHEAD_URL());
     }
 
-    @MyDescription("""
-            According to Testchechs #1-6
-            """)
+    //According to Testchecks #1-6
     @Description("Check visible of elements on page")
     @Test(dataProvider = "pageElements", dataProviderClass = DataProviders.class)
     public void checkWebElementsList(MainPageElements element)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
-        List<WebElement> list = woWHeadMainPageActions.selectWebElementList(element);
+        List<WebElement> list = woWHeadMainPage.selectWebElementList(element);
         Assert.assertFalse(list.isEmpty());
         System.out.println("The number of " + element.name() + " are " + list.size());
 
@@ -48,35 +45,19 @@ public class WebElementsPresentsTest extends BaseTestClass
         }
     }
 
-    @MyDescription("""
-            According to Testchecks #7
-            """)
+    //According to Testcheck #7
     @Description("Check token price")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkToken(TodayInWoWSwitcher switcher)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
-        woWHeadMainPageActions.clickToSwitcherAndSelectRealm(switcher);
-        System.out.println("The token price in " + switcher.name() + " is " + woWHeadMainPageActions.getTokenPrice(switcher));;
-        Assert.assertTrue(woWHeadMainPageActions.isTokenPresent(switcher));
+        Assert.assertTrue(woWHeadMainPage.getTokenPrice(switcher).isDisplayed());
     }
 
-    @MyDescription("""
-            According to Testchecks #8
-            """)
+    //According to Testcheck #8
     @Description("Check if mythic affixes is displayed")
     @Test(dataProvider = "realms", dataProviderClass = DataProviders.class)
     public void checkMythicAffixes(TodayInWoWSwitcher switcher)
     {
-        woWHeadMainPageActions = new WoWHeadMainPageActions();
-        List<WebElement> listOfAffixes = woWHeadMainPageActions
-                .clickToSwitcherAndSelectRealm(switcher)
-                .getMythicAffixes(switcher);
-        Assert.assertFalse(listOfAffixes.isEmpty());
-
-        for (WebElement affix : listOfAffixes) {
-            System.out.print(affix.getText() + "  ");
-            Assert.assertTrue(affix.isDisplayed());
-        }
+        Assert.assertTrue(woWHeadMainPage.isListOfMythicAffixesEmpty(switcher));
     }
 }

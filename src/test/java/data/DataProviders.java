@@ -1,7 +1,6 @@
 package data;
 
 import org.testng.annotations.DataProvider;
-import pages.pageLocators.WoWHeadMainPageLocators;
 import tools.anotations.UpdatePoint;
 import tools.enums.MainPageElements;
 import tools.enums.Professions;
@@ -11,7 +10,8 @@ import tools.enums.TodayInWoWSwitcher;
 import java.util.ArrayList;
 import java.util.List;
 
-@UpdatePoint("16.10.2023")
+//Test data
+@UpdatePoint("28.10.2023")
 public class DataProviders
 {
     @DataProvider(name = "pageElements")
@@ -31,22 +31,23 @@ public class DataProviders
     public Object[][] realms()
     {
         return new Object[][]{
-                {TodayInWoWSwitcher.NA_REALM},
-                {TodayInWoWSwitcher.EU_REALM}
+                {TodayInWoWSwitcher.EU_REALM},
+                {TodayInWoWSwitcher.NA_REALM}
         };
     }
 
-    @DataProvider(name = "indexes")
-    public Object[][] indexes()
-    {
-        Object[][] objects = new Object[new WoWHeadMainPageLocators().getRecentNewsList().size()][1];
-
-        for (int i = 0; i < objects.length; i++) {
-            objects[i][0] = i;
-        }
-
-        return objects;
-    }
+//    @DataProvider(name = "indexes")
+//    public Object[][] indexes()
+//    {
+//        Object[][] objects = new Object[new WoWHeadMainPageLocators().getRecentNewsList().size()][1];
+//        Object[][] objects = new Object[new WoWHeadMainPage().;
+//
+//        for (int i = 0; i < objects.length; i++) {
+//            objects[i][0] = i;
+//        }
+//
+//        return objects;
+//    }
 
     @DataProvider(name = "professions")
     public Object[][] professions()
@@ -72,5 +73,16 @@ public class DataProviders
         }
 
         return obj;
+    }
+
+    @DataProvider(name = "spells")
+    public Object[][] spells()
+    {
+        return new Object[][]
+        {
+                {"Execute"},
+                {"Heroic Throw"},
+                {"Shield Slam"},
+        };
     }
 }
